@@ -41,7 +41,7 @@ dataset_filtering(
 be saved if \code{save.rDATA = TRUE} (by default "MEA_DATA2ANALYZE")}
 }
 \value{
-An object of class 'MEASPIRs' which will be the input of all other functions of the MEASPIRs package.
+An object of class 'MEASpikeR' which will be the input of all other functions of the MEASpikeR package.
 if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATA2ANALYZE" is saved
 in the \code{data.path} directory
 }
@@ -55,7 +55,7 @@ dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data")
 
 }
 \references{
-Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). \strong{\emph{MEASPIRs}: a new package
+Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). \strong{\emph{MEASpikeR}: a new package
 for spike analysis and visualization of \emph{in vitro} MEA data}.
 }
 \author{

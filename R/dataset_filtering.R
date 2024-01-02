@@ -15,7 +15,7 @@
 #' @param filename Character, the name of the .Rdat file in which filtered data will
 #' be saved if \code{save.rDATA = TRUE} (by default "MEA_DATA2ANALYZE")
 #'
-#' @return An object of class 'MEASPIRs' which will be the input of all other functions of the MEASPIRs package.
+#' @return An object of class 'MEASpikeR' which will be the input of all other functions of the MEASpikeR package.
 #' if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATA2ANALYZE" is saved
 #' in the \code{data.path} directory
 #' @examples \dontrun{
@@ -23,7 +23,7 @@
 #' }
 #'
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
-#' @references Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). **_MEASPIRs_: a new package
+#' @references Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). **_MEASpikeR_: a new package
 #' for spike analysis and visualization of _in vitro_ MEA data**.
 #' @export
 dataset_filtering <- function(
@@ -122,7 +122,7 @@ dataset_filtering <- function(
 
   check.int <- function(i) {
     ix.ti <- unlist(strsplit( guideline[i, "TimeToExclude"], split = ","))
-    MEASPIRs:::is_overlap(ix.ti, guideline$TimeLimitStart[i], guideline$TimeLimitEnd[i])
+    MEASpikeR:::is_overlap(ix.ti, guideline$TimeLimitStart[i], guideline$TimeLimitEnd[i])
   }
 
   if (sum(!(is.na(guideline$TimeToExclude))) > 0) {
@@ -249,8 +249,8 @@ dataset_filtering <- function(
       ix.ti <- unlist(strsplit( guideline[i, "TimeToExclude"], split = ","))
       ix.ti <- sapply(1:length(ix.ti), function(j) gsub(" ", "", ix.ti[j]))
 
-      ix.ti <- MEASPIRs:::rm_overlapping_int(ix.ti, start_TW, true_end)$ls.int
-      TeX <- MEASPIRs:::rm_overlapping_int(ix.ti, start_TW, true_end)$TeX
+      ix.ti <- MEASpikeR:::rm_overlapping_int(ix.ti, start_TW, true_end)$ls.int
+      TeX <- MEASpikeR:::rm_overlapping_int(ix.ti, start_TW, true_end)$TeX
 
       for (k in 1:length(ix.ti)) {
         ix <- as.numeric(unlist(strsplit(ix.ti[k], split = "-")))
@@ -382,7 +382,7 @@ dataset_filtering <- function(
   names(fd) <- ls()[ grep("filtered.dataspike", ls()) ]
   output <- c(output, fd)
 
-  class(output) <- "MEASPIRs"
+  class(output) <- "MEASpikeR"
 
   if (save.rDATA == TRUE) save(output,
                                file = paste(data.path, paste0(filename,".Rdat"), sep = "/"))

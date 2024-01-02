@@ -1,4 +1,4 @@
-Package: MEASPIRs
+Package: MEASpikeR
 Title: Spike Analysis
 Version: 1.0.0
 Authors@R: c(
@@ -7,8 +7,8 @@ Authors@R: c(
     person("Carine", "Dalle", role = "aut", email = "carine.dalle@icm-institute.org"),
     person("Stephen", "Whitmarsh", role = "aut", email = "stephen.whitmarsh@icm-institute.org"))
 Maintainer: Gaspard Martet <gaspard.martet@icm-institute.org>
-Description: The MEASPIRs is a library of R functions designed for spike analysis.
-    The functions in MEASPIRs can be classified into three main blocks 
+Description: The MEASpikeR is a library of R functions designed for spike analysis.
+    The functions in MEASpikeR can be classified into three main blocks 
     (i) dataset filtering; (ii) exploratory data analyses and (iii) data visualization.
     Its power resides in the use of an analytical guideline to perform customized 
     and multiple analysis of a single recording file.
@@ -37,3 +37,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+VignetteIndexEntry: my-vignette
