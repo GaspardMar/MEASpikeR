@@ -116,6 +116,7 @@ ISI <- function(
     start_TW <- info.cond$start_TW[j]
     end_TW <- info.cond$end_TW[j]
 
+    cond.nb <- guideline$ConditionNumber[i]
     expgrp <- guideline$ExperimentalGroup[j]
     expcond <- guideline$ExperimentalCondition[j]
     TeX <- info.cond$TeX[j]
