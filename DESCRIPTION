@@ -1,0 +1,39 @@
+Package: MEASPIRs
+Title: Spike Analysis
+Version: 1.0.0
+Authors@R: c(
+    person("François-Xavier", "Lejeune", role = c("aut","cph"), email = "f-x.lejeune@icm-institute.org"),
+    person("Gaspard", "Martet", role = c("aut","cre"), email = "gaspard.martet@icm-institute.org"),
+    person("Carine", "Dalle", role = "aut", email = "carine.dalle@icm-institute.org"),
+    person("Stephen", "Whitmarsh", role = "aut", email = "stephen.whitmarsh@icm-institute.org"))
+Maintainer: Gaspard Martet <gaspard.martet@icm-institute.org>
+Description: The MEASPIRs is a library of R functions designed for spike analysis.
+    The functions in MEASPIRs can be classified into three main blocks 
+    (i) dataset filtering; (ii) exploratory data analyses and (iii) data visualization.
+    Its power resides in the use of an analytical guideline to perform customized 
+    and multiple analysis of a single recording file.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    openxlsx,
+    grid,
+    reshape2,
+    gridExtra,
+    ggplot2,
+    dplyr,
+    ggpubr,
+    NbClust,
+    viridis,
+    RColorBrewer,
+    wesanderson,
+    grDevices,
+    matlab,
+    writexl,
+    data.table
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
