@@ -285,7 +285,7 @@ spike_waveform <- function(
 
       title <- grid::textGrob(paste("\n", name, "\n"), gp = grid::gpar(cex = .7))
 
-      g <- ggpubr::annotate_figure(g, top = ggpubr::text_grob(name, size = 10, color = "black", family = "Arial"))
+      g <- ggpubr::annotate_figure(g, top = ggpubr::text_grob(name, size = 14, color = "black", family = "Arial"))
 
       if (format.save %in% c("both", "one_page")){
 

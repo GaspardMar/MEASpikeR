@@ -42,11 +42,17 @@ dataset_filtering <- function(
     filename = "MEA_DATA2ANALYZE"
 ) {
 
+  if (file.exists(paste0(data.path, "/",guideline_name_file, ".xlsx")) == FALSE){
+    stop("Path to the guideline file doesn't exist. Please check the name of your guideline file
+         and specify it in guideline_name_file argument", call. = FALSE)
+  }
+
   guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_name_file, ".xlsx"),
                                    sheet = sheet_used,
                                    rowNames = FALSE, colNames = FALSE, startRow = 2,
                                    skipEmptyCols = FALSE,
                                    cols = 1:12)
+
 
   # read.xlsx does not read the last empty columns of a data.frame
   # Need in this case to add NA columns to have exactly 11 columns

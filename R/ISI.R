@@ -263,7 +263,7 @@ ISI <- function(
 
       g <- ggpubr::ggarrange(plotlist = plot_list, ncol = 8, nrow = 8, labels = name)
 
-      g <- ggpubr::annotate_figure(g, top = ggpubr::text_grob(name, size = 10, color = "black", family = "Arial"))
+      g <- ggpubr::annotate_figure(g, top = ggpubr::text_grob(name, size = 14, color = "black", family = "Arial"))
 
       if (format.save %in% c("both", "one_page")){
 
