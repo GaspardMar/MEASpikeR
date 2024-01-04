@@ -3,6 +3,7 @@
 #' Filters the data according to the conditions of the guideline
 #'
 #' @param data.path The path directory to the folder containing the data and the guideline.
+#' @param guideline_name_file The name of the excel file containing the guideline
 #' @param sheet_used Number indicating the excel sheet where the guideline is located (by default 1)
 #' @param MinFR Minimum firing rate to consider (by default 0)
 #' @param spike.sorting Boolean, if TRUE a spike sorting is performed (by default FALSE)
@@ -19,7 +20,8 @@
 #' if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATA2ANALYZE" is saved
 #' in the \code{data.path} directory
 #' @examples \dontrun{
-#' dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data")
+#' dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
+#' guideline_name_file = "MEA_Spikes_ANA_R_guideline")
 #' }
 #'
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
@@ -27,7 +29,9 @@
 #' for spike analysis and visualization of _in vitro_ MEA data**.
 #' @export
 dataset_filtering <- function(
-    data.path, sheet_used = 1,
+    data.path,
+    guideline_name_file,
+    sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
     min.spike = 10,
@@ -38,7 +42,7 @@ dataset_filtering <- function(
     filename = "MEA_DATA2ANALYZE"
 ) {
 
-  guideline <- openxlsx::read.xlsx(paste0(data.path, "/MEA_Spikes_ANA_R_guideline.xlsx"),
+  guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_name_file, ".xlsx"),
                                    sheet = sheet_used,
                                    rowNames = FALSE, colNames = FALSE, startRow = 2,
                                    skipEmptyCols = FALSE,
@@ -137,6 +141,7 @@ dataset_filtering <- function(
            call. = FALSE)
 
   }
+
 
   #----------#
 
