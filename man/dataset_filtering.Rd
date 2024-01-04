@@ -6,7 +6,7 @@
 \usage{
 dataset_filtering(
   data.path,
-  guideline_name_file,
+  guideline_name_file = "MEA_Spikes_ANA_R_guideline",
   sheet_used = 1,
   MinFR = 0,
   spike.sorting = FALSE,
@@ -20,8 +20,6 @@ dataset_filtering(
 }
 \arguments{
 \item{data.path}{The path directory to the folder containing the data and the guideline.}
-
-\item{guideline_name_file}{The name of the excel file containing the guideline}
 
 \item{sheet_used}{Number indicating the excel sheet where the guideline is located (by default 1)}
 
@@ -42,6 +40,8 @@ dataset_filtering(
 
 \item{filename}{Character, the name of the .Rdat file in which filtered data will
 be saved if \code{save.rDATA = TRUE} (by default "MEA_DATA2ANALYZE")}
+
+\item{guideline_file_name}{The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")}
 }
 \value{
 An object of class 'MEASpikeR' which will be the input of all other functions of the MEASpikeR package.
