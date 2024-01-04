@@ -21,7 +21,7 @@
 #' in the \code{data.path} directory
 #' @examples \dontrun{
 #' dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
-#' guideline_name_file = "MEA_Spikes_ANA_R_guideline")
+#' guideline_file_name = "MEA_Spikes_ANA_R_guideline")
 #' }
 #'
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
@@ -30,7 +30,7 @@
 #' @export
 dataset_filtering <- function(
     data.path,
-    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
+    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -42,12 +42,12 @@ dataset_filtering <- function(
     filename = "MEA_DATA2ANALYZE"
 ) {
 
-  if (file.exists(paste0(data.path, "/",guideline_name_file, ".xlsx")) == FALSE){
+  if (file.exists(paste0(data.path, "/",guideline_file_name, ".xlsx")) == FALSE){
     stop("Path to the guideline file doesn't exist. Please check the name of your guideline file
-         and specify it in guideline_name_file argument", call. = FALSE)
+         and specify it in guideline_file_name argument", call. = FALSE)
   }
 
-  guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_name_file, ".xlsx"),
+  guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_file_name, ".xlsx"),
                                    sheet = sheet_used,
                                    rowNames = FALSE, colNames = FALSE, startRow = 2,
                                    skipEmptyCols = FALSE,
