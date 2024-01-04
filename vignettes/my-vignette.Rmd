@@ -109,8 +109,6 @@ write_xlsx(guideline, path = guideline_path)
 
 ```
 
-An important note: the guideline must be called **MEA_Spikes_ANA_R_guideline**.
-
 **The guideline has to be saved in the `\data` folder.** This is a view of the `\data` folder:
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file3.png)
@@ -126,6 +124,7 @@ data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path, 
+    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -159,7 +158,7 @@ filt.data.path <- "C:/Users/Documents/MEA/data/MEA_DATA2ANALYZE.Rdat"
 
 # using the spike_waveform function with a MEASpikeR object in input
 MEASpikeR::spike_waveform(
-  object = out.MEA
+  object = out.MEA,
   filt.data.path = NA,
   working_directory = NA,
   spike_col = "forestgreen",

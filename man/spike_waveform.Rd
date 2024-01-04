@@ -58,6 +58,7 @@ display of colored events according to their assignment to a cluster
 \examples{
 \dontrun{
 out.MEA <- MEASpikeR::dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
+guideline_name_file = "MEA_Spikes_ANA_R_guideline",
 save.rDATA = TRUE)
 
 # if you want to work with the MEASpikeR object

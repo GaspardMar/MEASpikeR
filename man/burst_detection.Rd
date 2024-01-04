@@ -47,6 +47,7 @@ Burst analysis using Chen or MI methods
 \examples{
 \dontrun{
 out.MEA <- MEASpikeR::dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
+guideline_name_file = "MEA_Spikes_ANA_R_guideline",
 save.rDATA = TRUE)
 
 # if you want to work with the MEASpikeR object
