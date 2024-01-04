@@ -3,7 +3,7 @@
 #' Filters the data according to the conditions of the guideline
 #'
 #' @param data.path The path directory to the folder containing the data and the guideline.
-#' @param guideline_name_file The name of the excel file containing the guideline
+#' @param guideline_file_name The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")
 #' @param sheet_used Number indicating the excel sheet where the guideline is located (by default 1)
 #' @param MinFR Minimum firing rate to consider (by default 0)
 #' @param spike.sorting Boolean, if TRUE a spike sorting is performed (by default FALSE)
@@ -30,7 +30,7 @@
 #' @export
 dataset_filtering <- function(
     data.path,
-    guideline_name_file,
+    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
