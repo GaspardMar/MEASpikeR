@@ -371,4 +371,4 @@ The output is an excel file which gives informations (burts duration, number of 
 ## References
 
 Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). **_MEASpikeR_: a new package
-#' for spike analysis and visualization of _in vitro_ MEA data**.
+for spike analysis and visualization of _in vitro_ MEA data**.
