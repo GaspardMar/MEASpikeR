@@ -333,6 +333,8 @@ MEASpikeR::firing_rate(
 
 The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the working directory you have precised in the `working_directory` argument.
 
+![](img/firing_rate.png)
+
 ### burst_detection
 
 This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst. It operates as follow: 
@@ -367,6 +369,8 @@ MEASpikeR::burst_detection(
 ```
 
 The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the working directory you have precised in the `working_directory` argument.
+
+![](img/burst_detection.png)
 
 ## References
 
