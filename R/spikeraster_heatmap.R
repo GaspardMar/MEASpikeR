@@ -17,7 +17,10 @@
 #' @param min_IBI Parameter settings for burst detection (for MI) (by default 50)
 #' @param min_spike_in_burst Parameter settings for burst detection (for MI) (by default 5)
 #' @param min_burst_duration Parameter settings for burst detection (for MI) (by default 50)
-#' @param mypal Character specifying the color palette for the heatmap (by default "viridis2")
+#' @param mypal Character specifying the color palette for the heatmap (by default "viridis2") the other available
+#' palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
+#' "YlGn", "YlGnBu", "YlOrBr", "YlOrRd", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral",
+#' "jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2", "zissou1"
 #' @param col.cell.border Character specifying the color delimiting the cells in the heatmap (by default "gray85")
 #'
 #' @return A PDF file displaying raster plots and heatmaps located in the working directory

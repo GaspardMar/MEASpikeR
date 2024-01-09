@@ -51,7 +51,10 @@ the burst detection method ("MI" or "Chen")(by default "MI")}
 
 \item{min_burst_duration}{Parameter settings for burst detection (for MI) (by default 50)}
 
-\item{mypal}{Character specifying the color palette for the heatmap (by default "viridis2")}
+\item{mypal}{Character specifying the color palette for the heatmap (by default "viridis2") the other available
+palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
+"YlGn", "YlGnBu", "YlOrBr", "YlOrRd", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral",
+"jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2", "zissou1"}
 
 \item{col.cell.border}{Character specifying the color delimiting the cells in the heatmap (by default "gray85")}
 }
