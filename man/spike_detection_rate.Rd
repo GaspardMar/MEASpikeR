@@ -53,5 +53,5 @@ working_directory = "C:/Users/prenom.nom/Documents"
 }
 }
 \author{
-François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
+François-Xavier Lejeune, Gaspard Martet, Carine Dalle
 }

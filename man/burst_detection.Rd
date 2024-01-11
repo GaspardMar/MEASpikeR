@@ -68,5 +68,5 @@ Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). \s
 for spike analysis and visualization of \emph{in vitro} MEA data}.
 }
 \author{
-François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
+François-Xavier Lejeune, Gaspard Martet, Carine Dalle
 }

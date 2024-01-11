@@ -12,7 +12,7 @@
 #' Additionally, there is a graphic per condition representing the firing rate (Hz) as a function of time (s).
 #' All these files are saved in the working directory specified in the 'working_directory' argument.
 #' @export
-#' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
+#' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle
 #'
 #' @examples \dontrun{
 #' out.MEA <- MEASpikeR::dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",

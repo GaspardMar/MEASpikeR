@@ -24,7 +24,7 @@
 #' guideline_file_name = "MEA_Spikes_ANA_R_guideline")
 #' }
 #'
-#' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle, Stephen Whitmarsh
+#' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle
 #' @references Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). **_MEASpikeR_: a new package
 #' for spike analysis and visualization of _in vitro_ MEA data**.
 #' @export
