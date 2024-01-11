@@ -7,7 +7,7 @@
 spikeraster_heatmap(
   object = NA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -28,7 +28,7 @@ spikeraster_heatmap(
 \item{filt.data.path}{Path to the "MEA_DATA2ANALYZE.Rdat" file generated
 by the \code{dataset_filtering} function.}
 
-\item{working_directory}{Character specifying the working directory where we want to save the output pdf file}
+\item{output_directory}{Character specifying the directory where we want to save the output pdf file}
 
 \item{scale}{Character specifying the scale ("free"/"fixed")(by default "free")}
 
@@ -59,7 +59,7 @@ palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd
 \item{col.cell.border}{Character specifying the color delimiting the cells in the heatmap (by default "gray85")}
 }
 \value{
-A PDF file displaying raster plots and heatmaps located in the working directory
+A PDF file displaying raster plots and heatmaps located in the output directory
 }
 \description{
 Create raster plots and heatmaps
@@ -73,13 +73,13 @@ save.rDATA = TRUE)
 # if you want to work with the MEASpikeR object
 MEASpikeR::spikeraster_heatmap(
 object = out.MEA,
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )
 
 # if you want to work with the saved Rdat file
 MEASpikeR::spikeraster_heatmap(
 filt.data.path = "C:/Users/prenom.nom/Documents/data/MEA_DATA2ANALYZE.Rdat",
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )}
 }
 \references{

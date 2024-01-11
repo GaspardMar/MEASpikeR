@@ -7,7 +7,7 @@
 ISI(
   object = NA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   col_hist = "darkgreen",
   bin.width = 50,
   interval.max = 300,
@@ -20,7 +20,7 @@ ISI(
 \item{filt.data.path}{Path to the ".Rdat" file generated
 by the \code{dataset_filtering} function}
 
-\item{working_directory}{Character specifying the working directory where we want to save the output folder}
+\item{output_directory}{Character specifying the directory where we want to save the output folder}
 
 \item{col_hist}{Character specifying the color of the histogram (by default "darkgreen")}
 
@@ -54,13 +54,13 @@ save.rDATA = TRUE)
 # if you want to work with the MEASpikeR object
 MEASpikeR::ISI(
 object = out.MEA,
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )
 
 # if you want to work with the saved Rdat file
 MEASpikeR::ISI(
 filt.data.path = "C:/Users/prenom.nom/Documents/data/MEA_DATA2ANALYZE.Rdat",
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )
 }
 }

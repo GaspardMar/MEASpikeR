@@ -7,7 +7,7 @@
 burst_detection(
   object = NA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -22,7 +22,7 @@ burst_detection(
 \item{filt.data.path}{Path to the ".Rdat" file generated
 by the \code{dataset_filtering} function}
 
-\item{working_directory}{Character specifying the working directory where we want to save the output excel file}
+\item{output_directory}{Character specifying the output directory where we want to save the output excel file}
 
 \item{burst.detection.method}{Character specifying the choice of the burst
 detection method ("MI" or "chen") (by default "MI")}
@@ -38,8 +38,8 @@ detection method ("MI" or "chen") (by default "MI")}
 \item{min_burst_duration}{Number, parameter setting for burst detection (by default 50)}
 }
 \value{
-An excel file with burst analysis located in the working directory
-specified in the \code{working_directory} argument
+An excel file with burst analysis located in the output directory
+specified in the \code{output_directory} argument
 }
 \description{
 Burst analysis using Chen or MI methods
@@ -53,13 +53,13 @@ save.rDATA = TRUE)
 # if you want to work with the MEASpikeR object
 MEASpikeR::burst_detection(
 object = out.MEA,
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )
 
 # if you want to work with the saved Rdat file
 MEASpikeR::burst_detection(
 filt.data.path = "C:/Users/prenom.nom/Documents/data/MEA_DATA2ANALYZE.Rdat",
-working_directory = "C:/Users/prenom.nom/Documents"
+output_directory = "C:/Users/prenom.nom/Documents"
 )
 }
 }
