@@ -179,6 +179,8 @@ MEASpikeR::spike_waveform(
 
 The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the working directory you precised in `working_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
 
+**note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the workbook.** 
+
 **WARNING :** the path of the working directory doesn't have to be too long because there is a limit number of character to save these files.
 
 ![](img/outfile_waveform_both.png)
