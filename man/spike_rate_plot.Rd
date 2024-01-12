@@ -31,7 +31,7 @@ Additionally, there is a graphic per condition representing the firing rate (Hz)
 All these files are saved in the output directory specified in the 'output_directory' argument.
 }
 \description{
-Spike Detection Rate
+Spike Rate Plot
 }
 \examples{
 \dontrun{
