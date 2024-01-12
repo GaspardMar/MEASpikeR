@@ -16,7 +16,7 @@
 #' specified in the \code{output_directory} argument
 #' @export
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle
-#' @references  Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). **_MEASpikeR_: a new package
+#' @references  Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). **_MEASpikeR_: a new package
 #' for spike analysis and visualization of _in vitro_ MEA data**.
 #'
 #' @examples \dontrun{

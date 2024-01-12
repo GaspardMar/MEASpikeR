@@ -13,6 +13,8 @@
 #' All these files are saved in the output directory specified in the 'output_directory' argument.
 #' @export
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle
+#' @references Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). **_MEASpikeR_: a new package
+#' for spike analysis and visualization of _in vitro_ MEA data**.
 #'
 #' @examples \dontrun{
 #' out.MEA <- MEASpikeR::dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
