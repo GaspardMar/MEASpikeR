@@ -20,7 +20,8 @@
 #' @param mypal Character specifying the color palette for the heatmap (by default "viridis2") the other available
 #' palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
 #' "YlGn", "YlGnBu", "YlOrBr", "YlOrRd", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral",
-#' "jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2" and "zissou1"
+#' "jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2" and "zissou1". These palettes come from \code{viridis},
+#' \code{wesanderson} and \code{RColorBrewer} packages.
 #' @param col.cell.border Character specifying the color delimiting the cells in the heatmap (by default "gray85")
 #'
 #' @return A PDF file displaying raster plots and heatmaps located in the output directory
