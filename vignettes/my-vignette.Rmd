@@ -404,3 +404,8 @@ knitr::kable(head(bd[,1:7]), format = "html", align = "c")
 knitr::kable(head(bd[,8:12]), format = "html", align = "c")
 
 ```
+
+## References
+
+Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). **_MEASpikeR_: a new package
+for spike analysis and visualization of _in vitro_ MEA data**.
