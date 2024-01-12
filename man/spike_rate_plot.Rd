@@ -52,6 +52,10 @@ output_directory = "C:/Users/prenom.nom/Documents"
 )
 }
 }
+\references{
+Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). \strong{\emph{MEASpikeR}: a new package
+for spike analysis and visualization of \emph{in vitro} MEA data}.
+}
 \author{
 François-Xavier Lejeune, Gaspard Martet, Carine Dalle
 }

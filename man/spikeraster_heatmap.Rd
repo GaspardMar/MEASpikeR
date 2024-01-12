@@ -84,7 +84,7 @@ output_directory = "C:/Users/prenom.nom/Documents"
 )}
 }
 \references{
-Dalle C., Martet G., Lejeune FX., Rebola N., Kaddouri Y., Whitmarsh S.(2023). \strong{\emph{MEASpikeR}: a new package
+Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). \strong{\emph{MEASpikeR}: a new package
 for spike analysis and visualization of \emph{in vitro} MEA data}.
 }
 \author{
