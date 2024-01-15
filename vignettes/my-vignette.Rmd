@@ -160,7 +160,7 @@ filt.data.path <- "C:/Users/Documents/MEA/data/MEA_DATA2ANALYZE.Rdat"
 MEASpikeR::spike_waveform(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -173,7 +173,7 @@ MEASpikeR::spike_waveform(
 MEASpikeR::spike_waveform(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -184,7 +184,7 @@ MEASpikeR::spike_waveform(
 
 ```
 
-The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the working directory you precised in `working_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
+The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the working directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
 
 **Note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the folder.**
 
@@ -209,7 +209,7 @@ This function generates histogram of the inter-spike interval (ISI) which is the
 MEASpikeR::ISI(
   object = out.MEA,
   filt.data.path = NA, 
-  working_directory = NA,
+  output_directory = NA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -220,7 +220,7 @@ MEASpikeR::ISI(
 MEASpikeR::ISI(
   object = NA,
   filt.data.path = filt.data.path, 
-  working_directory = NA,
+  output_directory = NA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -229,7 +229,7 @@ MEASpikeR::ISI(
 
 ```
 
-The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as prefix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the working directory you precised in `working_directory` argument.
+The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as prefix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the working directory you precised in `output_directory` argument.
 
 If we decide to open one of png files, we can see the ISI histogram for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw an histogram. 
 
@@ -249,7 +249,7 @@ This function gives two types of graphics: Spikerasters and heatmaps. The first 
 MEASpikeR::spikeraster_heatmap(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -268,7 +268,7 @@ MEASpikeR::spikeraster_heatmap(
 MEASpikeR::spikeraster_heatmap(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -285,7 +285,7 @@ MEASpikeR::spikeraster_heatmap(
 
 ```
 
-The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the working directory you precised in the `working_directory` argument. There is a view of this pdf file : 
+The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the working directory you precised in the `output_directory` argument. There is a view of this pdf file : 
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/rasterplot_heatmap.png)
 
@@ -298,7 +298,7 @@ This function can be used to see for each condition at which time spikes have th
 MEASpikeR::spike_detection_rate(
                      object = out.MEA,
                      filt.data.path = NA, 
-                     working_directory = NA,
+                     output_directory = NA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -307,7 +307,7 @@ MEASpikeR::spike_detection_rate(
 MEASpikeR::spike_detection_rate(
                      object = NA,
                      filt.data.path = filt.data.path, 
-                     working_directory = NA,
+                     output_directory = NA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -318,7 +318,7 @@ In output of this function, we obtain as many pictures as number of conditions i
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/example_detection_rate.png)
 
-These pictures are saved in the working directory you have precised in the `working_directory` argument.
+These pictures are saved in the working directory you have precised in the `output_directory` argument.
 
 ## Step 5: Quantitative data analyses functions
 
@@ -331,20 +331,26 @@ This function extracts the number of active electrodes and mean firing rate (MFR
 MEASpikeR::firing_rate(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA)
+  output_directory = NA)
 
 # Using the firing_rate function with the Rdat file as input
 MEASpikeR::firing_rate(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA)
+  output_directory = NA)
 
 ```
 
-The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the working directory you have precised in the `working_directory` argument.
+The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the working directory you have precised in the `output_directory` argument.
+
+#### Sheet 1: FiringRate
+
+The first sheet called "FiringRate" indicates the firing rate for each channel not excluded in the guideline for each condition, there is an overview of the first sheet.
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE}
 fr <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx")
+fr2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx", sheet = 2)
+
 
 knitr::kable(head(fr[,1:4]), format = "html", align = "c")
 
@@ -356,6 +362,51 @@ knitr::kable(head(fr[,5:12]), format = "html", align = "c")
 
 ```
 
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **TimeWindow** is the time window (s) on which we will record spike activity.
+* **record_duration**
+* **ExperimentalGroup** is the experimental group.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **nb.spike** is the number of spikes observed during the time window.
+* **TaN** is the difference between the highest value and the lowest value of the time window.
+* **TeX**
+
+#### Sheet 2: MFR
+
+The second sheet called "MFR" is a summary of the firing rate for each conditions of the guideline. There is an overview of the second sheet:
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+
+knitr::kable(head(fr2[,1:4]), format = "html", align = "c")
+knitr::kable(head(fr2[,5:8]), format = "html", align = "c")
+knitr::kable(head(fr2[,9:13]), format = "html", align = "c")
+
+```
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **TimeWindow** is the time window (s) on which we will record spike activity.
+* **record_duration**
+* **ExperimentalGroup** is the experimental group.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **MeanFiringRate (Hz)** is the mean firing rate on the channels for each conditions.
+* **SD** is the standard error of the firing rate on the channels for each conditions.
+* **nb.active.electrodes** is the count of channels not excluded according to the condition.
+* **nb.ch.excluded** is the count of channels excluded according to the condition.
+* **%active.electrodes**
+* **TeX**
+* **TaN** is the difference between the highest value and the lowest value of the time window.
+
+#### sheet 3: guideline
+
+It's the same as the guideline in the `\data` folder.
 
 ### burst_detection
 
@@ -366,7 +417,7 @@ This function detects bursts which are short periods of time with elevated spike
 MEASpikeR::burst_detection(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -379,7 +430,7 @@ MEASpikeR::burst_detection(
 MEASpikeR::burst_detection(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -390,10 +441,17 @@ MEASpikeR::burst_detection(
 
 ```
 
-The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the working directory you have precised in the `working_directory` argument.
+The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the working directory you have precised in the `output_directory` argument.
+
+#### Sheet 1: Burst
+
+There is an overview of the first sheet called "Burst":
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE}
 bd <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx")
+bd2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 2)
+bd3 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 3)
+
 
 knitr::kable(head(bd[,1:7]), format = "html", align = "c")
 
@@ -404,6 +462,84 @@ knitr::kable(head(bd[,1:7]), format = "html", align = "c")
 knitr::kable(head(bd[,8:12]), format = "html", align = "c")
 
 ```
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **burst** is the identifiant number of the burst you have in the considered channel.
+* **n.spike.in.burst** is the number of spikes in the considered burst.
+* **burst_duration** is the burst time.
+* **mean.isi.within.burst** is the mean time of inter spike interval (ISI).
+* **n.spike.in.channel** is the number of spikes in the considered channel.
+* **burst start**
+* **IBI**
+* **analyzed.time** is the difference between the highest value and the lowest value of the time window.
+* **spike.freq.burst**
+
+#### Sheet 2: Channel
+
+There is an overview of the second sheet called "Channel" :
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+
+knitr::kable(head(bd2[,1:7]), format = "html", align = "c")
+knitr::kable(head(bd2[,8:12]), format = "html", align = "c")
+
+```
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **nb.burst** is the number of burst in the considered channel.
+* **burst.rate**
+* **burst.rate.min**
+* **burst.mean.duration** is the burst mean duration.
+* **nb.spikes.within** is the number of spikes inside the considered burst.
+* **nb.spikes.outside** is the number of spikes registered in the considered channel.
+* **spike.freq.in.burst**
+* **mean.isi.within.burst** is the mean interspike duration for spikes which are in the burst.
+* **IBI.mean**
+
+#### Sheet 3: Condition
+
+This sheet is a summary of burst analysis for each condition.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+
+knitr::kable(head(bd3[,1:4]), format = "html", align = "c")
+knitr::kable(head(bd3[,5:9]), format = "html", align = "c")
+knitr::kable(head(bd3[,10:13]), format = "html", align = "c")
+knitr::kable(head(bd3[,14:17]), format = "html", align = "c")
+
+```
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **record_duration** is the record duration.
+* **TW** is the time window of interest for burst analysis for each condition.
+* **TeX**
+* **time.analyzed** is the difference between the highest value and the lowest value of TW.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **nb.burst** is the number of burst observed within each condition.
+* **burst.rate** is the burst rate within each condition.
+* **burst.rate.min**
+* **burst.mean.duration** is the burst mean duration within each condition.
+* **nb.spikes.within** is the sum of the number of spikes observed within each burst of each condition.
+* **nb.spikes.outside** is the sum of the number of spikes observed outside each burst of each condition.
+* **spike.freq.in.burst**
+* **mean.isi.within.burst** is the mean duration of interspike interval of each spike within each burst of
+each condition.
+* **IBI.mean**
+
+#### Sheet 4: Guideline
+
+It's the same as the guideline in the `\data` folder.
 
 ## References
 
