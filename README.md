@@ -88,6 +88,8 @@ guideline <- as.data.frame(guideline)
 
 If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package. You'll be able to fill in this guideline table directly in excel.
 
+**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_name_file` argument of `dataset_filtering` function. 
+
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Install and import the "writexl" package
 
@@ -117,7 +119,7 @@ data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path, 
-    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
+    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
