@@ -88,7 +88,7 @@ guideline <- as.data.frame(guideline)
 
 If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package. You'll be able to fill in this guideline table directly in excel.
 
-**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_name_file` argument of `dataset_filtering` function. 
+**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function. 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Install and import the "writexl" package
