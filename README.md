@@ -463,6 +463,7 @@ There is what each column means:
 This sheet is a summary of burst analysis for each condition.
 
 ![](img/burst_detection_sheet31.png)
+
 ![](img/burst_detection_sheet32.png)
 
 #### Sheet 4: Guideline
