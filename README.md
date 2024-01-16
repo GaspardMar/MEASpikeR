@@ -45,7 +45,7 @@ install.packages("devtools")
 library(devtools)
 
 # for loading the MEASpikeR package
-devtools::install_github("ParisBrainInstitute/MEASpikeR")
+devtools::install_github("DAC_ePhys/MEASpikeR")
 
 ```
 
