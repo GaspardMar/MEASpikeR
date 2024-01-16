@@ -44,8 +44,11 @@ install.packages("devtools")
 # for loading devtools package
 library(devtools)
 
-# for loading the MEASpikeR package
+# for installing the MEASpikeR package
 devtools::install_github("DAC_ePhys/MEASpikeR")
+
+# for loading the MEASpikeR package
+library(MEASpikeR)
 
 ```
 
