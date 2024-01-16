@@ -95,6 +95,8 @@ guideline <- as.data.frame(guideline)
 
 If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package. You'll be able to fill in this guideline table directly in excel.
 
+**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function. 
+
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Install and import the "writexl" package
 
@@ -113,6 +115,14 @@ write_xlsx(guideline, path = guideline_path)
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file3.png)
 
+This is an overview of the guideline:
+
+![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec13.png)
+
+![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec4.png)
+
+![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec512.png)
+
 ## Step 3 : Create a MEASpikeR object
 
 The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. This function is always the first one to use among the seven functions. **If you modify the guideline, you have to rerun this function.** It operates as follow :
@@ -124,7 +134,7 @@ data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path, 
-    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
+    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -289,13 +299,13 @@ The output of this function is a pdf file which contains a raster plot and a hea
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/rasterplot_heatmap.png)
 
-### spike_detection_rate
+### spike_rate_plot
 
 This function can be used to see for each condition at which time spikes have the higher rate 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the spike_detection_rate function with the MEASpikeR object as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the MEASpikeR object as input
+MEASpikeR::spike_rate_plot(
                      object = out.MEA,
                      filt.data.path = NA, 
                      output_directory = NA,
@@ -303,8 +313,8 @@ MEASpikeR::spike_detection_rate(
                      plot = "line"
                      )
 
-# Using the spike_detection_rate function with the Rdat file as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the Rdat file as input
+MEASpikeR::spike_rate_plot(
                      object = NA,
                      filt.data.path = filt.data.path, 
                      output_directory = NA,
