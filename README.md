@@ -44,8 +44,11 @@ install.packages("devtools")
 # for loading devtools package
 library(devtools)
 
-# for loading the MEASpikeR package
+# for installing the MEASpikeR package
 devtools::install_github("DAC_ePhys/MEASpikeR")
+
+# for loading the MEASpikeR package
+library(MEASpikeR)
 
 ```
 
@@ -107,6 +110,12 @@ write_xlsx(guideline, path = guideline_path)
 **The guideline has to be saved in the `\data` folder.** This is a view of the `\data` folder:
 
 ![](img/data_file3.png)
+
+This is an overview of the guideline:
+
+![](img/guidelinec13.png)
+![](img/guidelinec4.png)
+![](img/guidelinec512.png)
 
 ## Step 3 : Create a MEASpikeR object
 
