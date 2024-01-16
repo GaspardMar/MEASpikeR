@@ -153,7 +153,7 @@ filt.data.path <- "C:/Users/Documents/MEA/data/MEA_DATA2ANALYZE.Rdat"
 MEASpikeR::spike_waveform(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -166,7 +166,7 @@ MEASpikeR::spike_waveform(
 MEASpikeR::spike_waveform(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -177,11 +177,11 @@ MEASpikeR::spike_waveform(
 
 ```
 
-The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the working directory you precised in `working_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
+The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the output directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
 
 **Note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the folder.** 
 
-**WARNING :** the path of the working directory doesn't have to be too long because there is a limit number of character to save these files.
+**WARNING :** the path of the output directory doesn't have to be too long because there is a limit number of character to save these files.
 
 ![](img/outfile_waveform_both.png)
 
@@ -202,7 +202,7 @@ This function generates histogram of the inter-spike interval (ISI) which is the
 MEASpikeR::ISI(
   object = out.MEA,
   filt.data.path = NA, 
-  working_directory = NA,
+  output_directory = NA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -213,7 +213,7 @@ MEASpikeR::ISI(
 MEASpikeR::ISI(
   object = NA,
   filt.data.path = filt.data.path, 
-  working_directory = NA,
+  output_directory = NA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -222,7 +222,7 @@ MEASpikeR::ISI(
 
 ```
 
-The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as prefix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the working directory you precised in `working_directory` argument.
+The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as prefix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the output directory you precised in `output_directory` argument.
 
 If we decide to open one of png files, we can see the ISI histogram for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw an histogram. 
 
@@ -241,7 +241,7 @@ This function gives two types of graphics: Spikerasters and heatmaps. The first 
 MEASpikeR::spikeraster_heatmap(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -260,7 +260,7 @@ MEASpikeR::spikeraster_heatmap(
 MEASpikeR::spikeraster_heatmap(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -277,7 +277,7 @@ MEASpikeR::spikeraster_heatmap(
 
 ```
 
-The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the working directory you precised in the `working_directory` argument. There is a view of this pdf file : 
+The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the output directory you precised in the `output_directory` argument. There is a view of this pdf file : 
 
 ![](img/rasterplot_heatmap.png)
 
@@ -290,7 +290,7 @@ This function can be used to see for each condition at which time spikes have th
 MEASpikeR::spike_detection_rate(
                      object = out.MEA,
                      filt.data.path = NA, 
-                     working_directory = NA,
+                     output_directory = NA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -299,7 +299,7 @@ MEASpikeR::spike_detection_rate(
 MEASpikeR::spike_detection_rate(
                      object = NA,
                      filt.data.path = filt.data.path, 
-                     working_directory = NA,
+                     output_directory = NA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -310,7 +310,7 @@ In output of this function, we obtain as many pictures as number of conditions i
 
 ![](img/example_detection_rate.png)
 
-These pictures are saved in the working directory you have precised in the `working_directory` argument.
+These pictures are saved in the output directory you have precised in the `output_directory` argument.
 
 ## Step 5: Quantitative data analyses functions
 
@@ -323,17 +323,17 @@ This function extracts the number of active electrodes and mean firing rate (MFR
 MEASpikeR::firing_rate(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA)
+  output_directory = NA)
 
 # Using the firing_rate function with the Rdat file as input
 MEASpikeR::firing_rate(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA)
+  output_directory = NA)
 
 ```
 
-The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the working directory you have precised in the `working_directory` argument.
+The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the output directory you have precised in the `output_directory` argument.
 
 ![](img/firing_rate.png)
 
@@ -346,7 +346,7 @@ This function detects bursts which are short periods of time with elevated spike
 MEASpikeR::burst_detection(
   object = out.MEA,
   filt.data.path = NA,
-  working_directory = NA,
+  output_directory = NA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -359,7 +359,7 @@ MEASpikeR::burst_detection(
 MEASpikeR::burst_detection(
   object = NA,
   filt.data.path = filt.data.path,
-  working_directory = NA,
+  output_directory = NA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -370,7 +370,7 @@ MEASpikeR::burst_detection(
 
 ```
 
-The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the working directory you have precised in the `working_directory` argument.
+The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument.
 
 ![](img/burst_detection.png)
 
