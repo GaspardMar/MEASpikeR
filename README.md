@@ -283,13 +283,13 @@ The output of this function is a pdf file which contains a raster plot and a hea
 
 ![](img/rasterplot_heatmap.png)
 
-### spike_detection_rate
+### spike_rate_plot
 
 This function can be used to see for each condition at which time spikes have the higher rate 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the spike_detection_rate function with the MEASpikeR object as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the MEASpikeR object as input
+MEASpikeR::spike_rate_plot(
                      object = out.MEA,
                      filt.data.path = NA, 
                      output_directory = NA,
@@ -297,8 +297,8 @@ MEASpikeR::spike_detection_rate(
                      plot = "line"
                      )
 
-# Using the spike_detection_rate function with the Rdat file as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the Rdat file as input
+MEASpikeR::spike_rate_plot(
                      object = NA,
                      filt.data.path = filt.data.path, 
                      output_directory = NA,
