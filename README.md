@@ -45,7 +45,7 @@ install.packages("devtools")
 library(devtools)
 
 # for loading the MEASpikeR package
-devtools::install_github("ParisBrainInstitute/MEASpikeR")
+devtools::install_github("DAC_ePhys/MEASpikeR")
 
 ```
 
@@ -88,6 +88,8 @@ guideline <- as.data.frame(guideline)
 
 If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package. You'll be able to fill in this guideline table directly in excel.
 
+**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function. 
+
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Install and import the "writexl" package
 
@@ -117,7 +119,7 @@ data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path, 
-    guideline_name_file = "MEA_Spikes_ANA_R_guideline",
+    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -281,13 +283,13 @@ The output of this function is a pdf file which contains a raster plot and a hea
 
 ![](img/rasterplot_heatmap.png)
 
-### spike_detection_rate
+### spike_rate_plot
 
 This function can be used to see for each condition at which time spikes have the higher rate 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the spike_detection_rate function with the MEASpikeR object as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the MEASpikeR object as input
+MEASpikeR::spike_rate_plot(
                      object = out.MEA,
                      filt.data.path = NA, 
                      output_directory = NA,
@@ -295,8 +297,8 @@ MEASpikeR::spike_detection_rate(
                      plot = "line"
                      )
 
-# Using the spike_detection_rate function with the Rdat file as input
-MEASpikeR::spike_detection_rate(
+# Using the spike_rate_plot function with the Rdat file as input
+MEASpikeR::spike_rate_plot(
                      object = NA,
                      filt.data.path = filt.data.path, 
                      output_directory = NA,
@@ -335,7 +337,51 @@ MEASpikeR::firing_rate(
 
 The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the output directory you have precised in the `output_directory` argument.
 
-![](img/firing_rate.png)
+#### Sheet 1: FiringRate
+
+The first sheet called "FiringRate" indicates the firing rate for each channel not excluded in the guideline for each condition, there is an overview of the first sheet.
+
+![](img/firing_rate_sheet1.png)
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **TimeWindow** is the time window (s) on which we will record spike activity.
+* **record_duration**
+* **ExperimentalGroup** is the experimental group.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **nb.spike** is the number of spikes observed during the time window.
+* **TaN** is the difference between the highest value and the lowest value of the time window.
+* **TeX**
+
+#### Sheet 2: MFR
+
+The second sheet called "MFR" is a summary of the firing rate for each conditions of the guideline. There is an overview of the second sheet:
+
+![](img/firing_rate_sheet2.png)
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **TimeWindow** is the time window (s) on which we will record spike activity.
+* **record_duration**
+* **ExperimentalGroup** is the experimental group.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **MeanFiringRate (Hz)** is the mean firing rate on the channels for each conditions.
+* **SD** is the standard error of the firing rate on the channels for each conditions.
+* **nb.active.electrodes** is the count of channels not excluded according to the condition.
+* **nb.ch.excluded** is the count of channels excluded according to the condition.
+* **%active.electrodes**
+* **TeX**
+* **TaN** is the difference between the highest value and the lowest value of the time window.
+
+#### sheet 3: guideline
+
+It's the same as the guideline in the `\data` folder.
 
 ### burst_detection
 
@@ -370,9 +416,61 @@ MEASpikeR::burst_detection(
 
 ```
 
+#### Sheet 1: Burst
+
+There is an overview of the first sheet called "Burst":
+
 The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument.
 
-![](img/burst_detection.png)
+![](img/burst_detection_sheet1.png)
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **burst** is the identifiant number of the burst you have in the considered channel.
+* **n.spike.in.burst** is the number of spikes in the considered burst.
+* **burst_duration** is the burst time.
+* **mean.isi.within.burst** is the mean time of inter spike interval (ISI).
+* **n.spike.in.channel** is the number of spikes in the considered channel.
+* **burst start**
+* **IBI**
+* **analyzed.time** is the difference between the highest value and the lowest value of the time window.
+* **spike.freq.burst**
+
+#### Sheet 2: Channel
+
+There is an overview of the second sheet called "Channel" :
+
+![](img/burst_detection_sheet2.png)
+
+There is what each column means:
+
+* **ConditionNumber** is the number of the condition.
+* **channel** is the channel of interest.
+* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **nb.burst** is the number of burst in the considered channel.
+* **burst.rate**
+* **burst.rate.min**
+* **burst.mean.duration** is the burst mean duration.
+* **nb.spikes.within** is the number of spikes inside the considered burst.
+* **nb.spikes.outside** is the number of spikes registered in the considered channel.
+* **spike.freq.in.burst**
+* **mean.isi.within.burst** is the mean interspike duration for spikes which are in the burst.
+* **IBI.mean**
+
+#### Sheet 3: Condition
+
+This sheet is a summary of burst analysis for each condition.
+
+![](img/burst_detection_sheet31.png)
+
+![](img/burst_rate_sheet32.png)
+
+#### Sheet 4: Guideline
+
+It's the same as the guideline in the `\data` folder.
 
 ## References
 
