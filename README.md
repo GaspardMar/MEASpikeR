@@ -108,6 +108,12 @@ write_xlsx(guideline, path = guideline_path)
 
 ![](img/data_file3.png)
 
+This is an overview of the guideline:
+
+![](img/guidelinec13.png)
+![](img/guidelinec4.png)
+![](img/guidelinec512.png)
+
 ## Step 3 : Create a MEASpikeR object
 
 The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. This function is always the first one to use among the seven functions. **If you modify the guideline, you have to rerun this function.** It operates as follow :
