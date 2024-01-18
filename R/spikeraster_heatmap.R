@@ -17,7 +17,7 @@
 #' @param min_IBI Parameter settings for burst detection (for MI) (by default 50)
 #' @param min_spike_in_burst Parameter settings for burst detection (for MI) (by default 5)
 #' @param min_burst_duration Parameter settings for burst detection (for MI) (by default 50)
-#' @param mypal Character specifying the color palette for the heatmap (by default "viridis2") the other available
+#' @param palette Character specifying the color palette for the heatmap (by default "viridis2") the other available
 #' palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
 #' "YlGn", "YlGnBu", "YlOrBr", "YlOrRd", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral",
 #' "jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2" and "zissou1". These palettes come from \code{viridis},
@@ -60,7 +60,7 @@ spikeraster_heatmap <- function(
     min_IBI = 50,
     min_spike_in_burst = 5,
     min_burst_duration = 50,
-    mypal = "viridis2",
+    palette = "viridis2",
     col.cell.border = "gray85"
 ) {
 
@@ -85,7 +85,7 @@ spikeraster_heatmap <- function(
 
   else {stop("argument 'output_directory' is missing with no default")}
 
-  mypal <- MEASpikeR:::select_palette(mypal)
+  palette <- MEASpikeR:::select_palette(palette)
 
   # Find the max rate (Hz) and max total of peaks (# spikes) over all the recordings (files)
   # These values will be required to pre-define the legend limits of the plots
@@ -142,7 +142,7 @@ spikeraster_heatmap <- function(
     if ( info.cond$empty.file[j] ) {
 
       p1 <- MEASpikeR:::draw_void_rasterplot(shortname, start_TW, end_TW)
-      p2 <- MEASpikeR:::draw_void_heatmap(lab.exp, mypal, col.cell.border)
+      p2 <- MEASpikeR:::draw_void_heatmap(lab.exp, palette, col.cell.border)
 
       plot_list[[2*(j-1)+1]] <- p1
       plot_list[[2*(j-1)+2]] <- p2
@@ -235,7 +235,7 @@ spikeraster_heatmap <- function(
 
         #-- Plot 2 "Number total of peaks per channel" matrix plot --#
 
-        p2 <- MEASpikeR:::draw_void_heatmap(lab.exp, mypal, col.cell.border)
+        p2 <- MEASpikeR:::draw_void_heatmap(lab.exp, palette, col.cell.border)
 
         plot_list[[2*(j-1)+1]] <- p1
         plot_list[[2*(j-1)+2]] <- p2
@@ -332,12 +332,12 @@ spikeraster_heatmap <- function(
           ) +
           ggplot2::labs(fill = "# spikes")
 
-        if (scale == "free") p2 <- p2 + ggplot2::scale_fill_gradientn(colors = mypal)
+        if (scale == "free") p2 <- p2 + ggplot2::scale_fill_gradientn(colors = palette)
 
         if (scale == "fixed") p2 <- p2 + ggplot2::scale_fill_gradient2(
-          low = mypal[1],
-          mid = mypal[length(mypal)/2],
-          high = mypal[length(mypal)], # colors in the scale
+          low = palette[1],
+          mid = palette[length(palette)/2],
+          high = palette[length(palette)], # colors in the scale
           midpoint = midpoint.nb,
           limits = limits.nb )
 

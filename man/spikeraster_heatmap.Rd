@@ -18,7 +18,7 @@ spikeraster_heatmap(
   min_IBI = 50,
   min_spike_in_burst = 5,
   min_burst_duration = 50,
-  mypal = "viridis2",
+  palette = "viridis2",
   col.cell.border = "gray85"
 )
 }
@@ -51,7 +51,7 @@ the burst detection method ("MI" or "Chen")(by default "MI")}
 
 \item{min_burst_duration}{Parameter settings for burst detection (for MI) (by default 50)}
 
-\item{mypal}{Character specifying the color palette for the heatmap (by default "viridis2") the other available
+\item{palette}{Character specifying the color palette for the heatmap (by default "viridis2") the other available
 palettes are: "Blues", "BuGn", "BuPu","GnBu", "Greens", "Greys","Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
 "YlGn", "YlGnBu", "YlOrBr", "YlOrRd", "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral",
 "jet", "magma", "inferno", "plasma", "viridis", "cividis", "viridis2" and "zissou1". These palettes come from \code{viridis},
