@@ -263,7 +263,7 @@ MEASpikeR::spikeraster_heatmap(
   min_IBI = 50,
   min_spike_in_burst = 5,
   min_burst_duration = 50,
-  mypal = "viridis2",
+  palette = "viridis2",
   col.cell.border = "gray85"
 )
 
@@ -282,7 +282,7 @@ MEASpikeR::spikeraster_heatmap(
   min_IBI = 50,
   min_spike_in_burst = 5,
   min_burst_duration = 50,
-  mypal = "viridis2",
+  palette = "viridis2",
   col.cell.border = "gray85"
 )
 
@@ -321,7 +321,9 @@ In output of this function, we obtain as many pictures as number of conditions i
 
 ![](img/example_detection_rate.png)
 
-These pictures are saved in the output directory you have precised in the `output_directory` argument.
+In addition, this function returns an excel file called "AWSDR" with date and time as suffix and contains as many sheets as there are conditions. Each sheet contains a table with two columns. The first column indicates time, and the second column indicates the firing rate.
+
+These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument.
 
 ## Step 5: Quantitative data analyses functions
 
@@ -441,7 +443,7 @@ There is what each column means:
 * **burst** is the identifiant number of the burst you have in the considered channel.
 * **n.spike.in.burst** is the number of spikes in the considered burst.
 * **burst_duration** is the burst time.
-* **mean.isi.within.burst** is the mean time of inter spike interval (ISI).
+* **mean.isi.within.burst** is the mean time of inter spike interval (ISI) within a burst.
 * **n.spike.in.channel** is the number of spikes in the considered channel.
 * **burst start**
 * **IBI** is the inter-burst interval (IBI) which is the time between two sequential bursts.
@@ -476,6 +478,27 @@ This sheet is a summary of burst analysis for each condition.
 ![](img/burst_detection_sheet31.png)
 
 ![](img/burst_rate_sheet32.png)
+
+There is what each column means:
+
+* **ConditionNumber** is the identifiant number of the guideline condition.
+* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
+* **record_duration** is the record duration.
+* **TW** is the time window of interest for burst analysis for each condition.
+* **TeX**
+* **time.analyzed** is the difference between the highest value and the lowest value of TW.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **ExperimentalGroup** is the experimental group.
+* **nb.burst** is the number of burst observed within each condition.
+* **burst.rate** is the burst rate within each condition.
+* **burst.rate.min**
+* **burst.mean.duration** is the burst mean duration within each condition.
+* **nb.spikes.within** is the sum of the number of spikes observed within each burst of each condition.
+* **nb.spikes.outside** is the sum of the number of spikes observed outside each burst of each condition.
+* **spike.freq.in.burst**
+* **mean.isi.within.burst** is the mean duration of interspike interval of each spike within each burst of
+each condition.
+* **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition.
 
 #### Sheet 4: Guideline
 
