@@ -321,7 +321,9 @@ In output of this function, we obtain as many pictures as number of conditions i
 
 ![](img/example_detection_rate.png)
 
-These pictures are saved in the output directory you have precised in the `output_directory` argument.
+In addition, this function returns an excel file called "AWSDR" with date and time as suffix and contains as many sheets as there are conditions. Each sheet contains a table with two columns. The first column indicates time, and the second column indicates the firing rate.
+
+These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument.
 
 ## Step 5: Quantitative data analyses functions
 
