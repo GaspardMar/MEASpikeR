@@ -52,7 +52,7 @@ install.packages("devtools")
 library(devtools)
 
 # for installing the MEASpikeR package
-devtools::install_github("ParisBrainInstitute/MEASpikeR")
+devtools::install_github("DAC_ePhys/MEASpikeR")
 
 # for loading the MEASpikeR package
 library(MEASpikeR)
@@ -132,7 +132,7 @@ The `dataset_filtering` function extracts essential information from the guideli
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Put the path to the data file
-data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
+data_path <- "C:/Users/prenom.nom/Desktop/MEA/data"
 
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
@@ -159,7 +159,21 @@ Once this step executed, an Rdat file is saved in the `data_path` folder if you 
 
 ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file_rdat.png)
 
-## Step 4: Data visualisation functions
+## Step 4 (optional): Create an output directory
+
+In all the functions, results are saved in a directory which the path correponds to the `output_directory` argument. You can create a folder in which you want all your results are saved. But you can also save results in a current directory (like for example your Desktop or Documents) and that's why this step is optional. You'll just have to precise the path to the directory in which you want save your results in the `output_directory` argument.
+
+You can Run the code below to create it in your desktop with R or you can create it manually.
+
+```{r, include = TRUE, tidy = TRUE, eval = FALSE, higlight = TRUE}
+# Create an output directory
+dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA")
+
+```
+
+![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/output directory.png)
+
+## Step 5: Data visualisation functions
 
 ### spike_waveform
 
@@ -167,13 +181,16 @@ This function is used to visualize overlapped spike waveform from each electrode
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # The path to the Rdat file obtained by dataset_filtering
-filt.data.path <- "C:/Users/Documents/MEA/data/MEA_DATA2ANALYZE.Rdat"
+filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATA2ANALYZE.Rdat"
+
+# The path to the output directory created before (or you current directory)
+output_MEA <- "C:/Users/prenom.nom/Desktop/output MEA"
 
 # using the spike_waveform function with a MEASpikeR object in input
 MEASpikeR::spike_waveform(
   object = out.MEA,
   filt.data.path = NA,
-  output_directory = NA,
+  output_directory = output_MEA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -186,7 +203,7 @@ MEASpikeR::spike_waveform(
 MEASpikeR::spike_waveform(
   object = NA,
   filt.data.path = filt.data.path,
-  output_directory = NA,
+  output_directory = output_MEA,
   spike_col = "forestgreen",
   scale = "free",
   mean_trace = TRUE,
@@ -222,7 +239,7 @@ This function generates histogram of the inter-spike interval (ISI) which is the
 MEASpikeR::ISI(
   object = out.MEA,
   filt.data.path = NA, 
-  output_directory = NA,
+  output_directory = output_MEA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -233,7 +250,7 @@ MEASpikeR::ISI(
 MEASpikeR::ISI(
   object = NA,
   filt.data.path = filt.data.path, 
-  output_directory = NA,
+  output_directory = output_MEA,
   col_hist = "darkgreen", 
   bin.width = 50, 
   interval.max = 300,
@@ -262,7 +279,7 @@ This function gives two types of graphics: Spikerasters and heatmaps. The first 
 MEASpikeR::spikeraster_heatmap(
   object = out.MEA,
   filt.data.path = NA,
-  output_directory = NA,
+  output_directory = output_MEA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -281,7 +298,7 @@ MEASpikeR::spikeraster_heatmap(
 MEASpikeR::spikeraster_heatmap(
   object = NA,
   filt.data.path = filt.data.path,
-  output_directory = NA,
+  output_directory = output_MEA,
   scale = "free",
   end_record_color = "red",
   spike_col = "black",
@@ -311,7 +328,7 @@ This function can be used to see for each condition at which time spikes have th
 MEASpikeR::spike_rate_plot(
                      object = out.MEA,
                      filt.data.path = NA, 
-                     output_directory = NA,
+                     output_directory = output_MEA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -320,7 +337,7 @@ MEASpikeR::spike_rate_plot(
 MEASpikeR::spike_rate_plot(
                      object = NA,
                      filt.data.path = filt.data.path, 
-                     output_directory = NA,
+                     output_directory = output_MEA,
                      spike_col = "forestgreen", 
                      plot = "line"
                      )
@@ -334,7 +351,7 @@ In addition, this function returns an excel file called "AWSDR" with date and ti
 
 These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument.
 
-## Step 5: Quantitative data analyses functions
+## Step 6: Quantitative data analyses functions
 
 ### firing_rate
 
@@ -345,13 +362,13 @@ This function extracts the number of active electrodes and mean firing rate (MFR
 MEASpikeR::firing_rate(
   object = out.MEA,
   filt.data.path = NA,
-  output_directory = NA)
+  output_directory = output_MEA)
 
 # Using the firing_rate function with the Rdat file as input
 MEASpikeR::firing_rate(
   object = NA,
   filt.data.path = filt.data.path,
-  output_directory = NA)
+  output_directory = output_MEA)
 
 ```
 
@@ -431,7 +448,7 @@ This function detects bursts which are short periods of time with elevated spike
 MEASpikeR::burst_detection(
   object = out.MEA,
   filt.data.path = NA,
-  output_directory = NA,
+  output_directory = output_MEA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
@@ -444,7 +461,7 @@ MEASpikeR::burst_detection(
 MEASpikeR::burst_detection(
   object = NA,
   filt.data.path = filt.data.path,
-  output_directory = NA,
+  output_directory = output_MEA,
   burst.detection.method = "MI",
   max_ISI_start_burst = 170,
   max_ISI_end_burst = 300,
