@@ -263,7 +263,7 @@ MEASpikeR::spikeraster_heatmap(
   min_IBI = 50,
   min_spike_in_burst = 5,
   min_burst_duration = 50,
-  mypal = "viridis2",
+  palette = "viridis2",
   col.cell.border = "gray85"
 )
 
@@ -282,7 +282,7 @@ MEASpikeR::spikeraster_heatmap(
   min_IBI = 50,
   min_spike_in_burst = 5,
   min_burst_duration = 50,
-  mypal = "viridis2",
+  palette = "viridis2",
   col.cell.border = "gray85"
 )
 
