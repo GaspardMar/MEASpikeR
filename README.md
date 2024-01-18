@@ -117,6 +117,8 @@ This is an overview of the guideline:
 ![](img/guidelinec4.png)
 ![](img/guidelinec512.png)
 
+There is an example data folder in the following link: https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYBepv9jWIjbBIhvK3xMF6GzQ?e=bY4vQS
+
 ## Step 3 : Create a MEASpikeR object
 
 The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. **This function is always the first one to use among the seven functions. If you modify the guideline, you have to rerun this function.** It operates as follow :
