@@ -6,7 +6,7 @@
 #' @param spike_col Character specifying the color for the spikes with no spike sorting (by default "forestgreen")
 #' @param plot Character specifying the type of plot ("needle" or "line") (by default "line")
 #'
-#' @return An excel file calles "AWSDR" with date and time as prefix is created with as many sheets as there are conditions,
+#' @return An excel file called "AWSDR" with date and time as suffix is created with as many sheets as there are conditions,
 #' where each sheet contains a table with two columns.
 #' The first column indicates time, and the second column indicates the firing rate.
 #' Additionally, there is a graphic per condition representing the firing rate (Hz) as a function of time (s).
