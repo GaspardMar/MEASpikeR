@@ -486,6 +486,7 @@ There is what each column means:
 * **TeX**
 * **time.analyzed** is the difference between the highest value and the lowest value of TW.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **ExperimentalGroup** is the experimental group.
 * **nb.burst** is the number of burst observed within each condition.
 * **burst.rate** is the burst rate within each condition.
 * **burst.rate.min**
