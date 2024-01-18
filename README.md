@@ -441,7 +441,7 @@ There is what each column means:
 * **burst** is the identifiant number of the burst you have in the considered channel.
 * **n.spike.in.burst** is the number of spikes in the considered burst.
 * **burst_duration** is the burst time.
-* **mean.isi.within.burst** is the mean time of inter spike interval (ISI).
+* **mean.isi.within.burst** is the mean time of inter spike interval (ISI) within a burst.
 * **n.spike.in.channel** is the number of spikes in the considered channel.
 * **burst start**
 * **IBI** is the inter-burst interval (IBI) which is the time between two sequential bursts.
