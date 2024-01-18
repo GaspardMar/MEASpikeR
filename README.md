@@ -477,6 +477,26 @@ This sheet is a summary of burst analysis for each condition.
 
 ![](img/burst_rate_sheet32.png)
 
+There is what each column means:
+
+* **ConditionNumber** is the identifiant number of the guideline condition.
+* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
+* **record_duration** is the record duration.
+* **TW** is the time window of interest for burst analysis for each condition.
+* **TeX**
+* **time.analyzed** is the difference between the highest value and the lowest value of TW.
+* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
+* **nb.burst** is the number of burst observed within each condition.
+* **burst.rate** is the burst rate within each condition.
+* **burst.rate.min**
+* **burst.mean.duration** is the burst mean duration within each condition.
+* **nb.spikes.within** is the sum of the number of spikes observed within each burst of each condition.
+* **nb.spikes.outside** is the sum of the number of spikes observed outside each burst of each condition.
+* **spike.freq.in.burst**
+* **mean.isi.within.burst** is the mean duration of interspike interval of each spike within each burst of
+each condition.
+* **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition.
+
 #### Sheet 4: Guideline
 
 It's the same as the guideline in the `\data` folder.
