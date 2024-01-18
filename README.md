@@ -89,7 +89,7 @@ guideline <- as.data.frame(guideline)
 
 ```
 
-If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package. You'll be able to fill in this guideline table directly in excel.
+If you want to fill in this guideline in excel, you can run the code above and save this empty table with the `write_xlsx` function from the `writexl` package as described in the code below. You'll be able to fill in this guideline table directly in excel.
 
 **Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function. 
 
@@ -100,7 +100,7 @@ install.packages("writexl")
 library(writexl)
 
 # Specify the path of the Excel file where you want to save the guideline
-guideline_path <- "MEA_Spikes_ANA_R_guideline.xlsx"
+guideline_path <- "path_to_data_folder/MEA_Spikes_ANA_R_guideline.xlsx"
 
 # Save the guideline in excel format
 write_xlsx(guideline, path = guideline_path)
@@ -119,11 +119,11 @@ This is an overview of the guideline:
 
 ## Step 3 : Create a MEASpikeR object
 
-The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. This function is always the first one to use among the seven functions. **If you modify the guideline, you have to rerun this function.** It operates as follow :
+The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. **This function is always the first one to use among the seven functions. If you modify the guideline, you have to rerun this function.** It operates as follow :
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Put the path to the data file
-data_path <- "C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/data_v1/data"
+data_path <- "path_to_data_folder"
 
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
@@ -146,7 +146,7 @@ If you want to know what the parameters correspond to, you can run `?MEASpikeR::
 
 In output, the function converts all the input data into an object of class MEASpikeR which contains the filtered data of each condition. **The same object of class MEASpikeR will be used as input to all the other functions of the package.**
 
-Once this step executed, an Rdat file is saved in the `data_path` folder if you precised `save.Rdata = TRUE` in `dataset_filtering`. This Rdat file can be used as input of all other functions too:
+Once this step executed, an Rdat file is saved in the `data_path` folder if you precised `save.Rdata = TRUE` in `dataset_filtering`. This Rdat file is called by default "MEA_DATA2ANALYZE" but you can choose another name with the `filename` argument of `dataset_filtering` function. This Rdat file can be used as input of all other functions too:
 
 ![](img/data_file_rdat.png)
 
@@ -188,7 +188,7 @@ MEASpikeR::spike_waveform(
 
 ```
 
-The output of this function is a folder called **outfile_waveform_** with date and time as prefix and saved in the output directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
+The output of this function is a folder called **outfile_waveform_** with date and time as suffix and saved in the output directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
 
 **Note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the folder.** 
 
@@ -233,7 +233,7 @@ MEASpikeR::ISI(
 
 ```
 
-The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as prefix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the output directory you precised in `output_directory` argument.
+The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as suffix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the output directory you precised in `output_directory` argument.
 
 If we decide to open one of png files, we can see the ISI histogram for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw an histogram. 
 
@@ -245,7 +245,7 @@ We can also open it in pdf version:
 
 ### spikeraster_heatmap
 
-This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period af recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrod of the matrix. This function operates as follow : 
+This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrod of the matrix. This function operates as follow : 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Using the spikeraster_heatmap function with the MEASpikeR object as input
@@ -354,10 +354,10 @@ The first sheet called "FiringRate" indicates the firing rate for each channel n
 
 There is what each column means:
 
-* **ConditionNumber** is the number of the condition.
-* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **ConditionNumber** is the identifiant number of the guideline condition.
+* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
 * **TimeWindow** is the time window (s) on which we will record spike activity.
-* **record_duration**
+* **record_duration** is the total record duration which contains the time window.
 * **ExperimentalGroup** is the experimental group.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **channel** is the channel of interest.
@@ -374,10 +374,10 @@ The second sheet called "MFR" is a summary of the firing rate for each condition
 
 There is what each column means:
 
-* **ConditionNumber** is the number of the condition.
-* **ShortFilename** is the name of the excel file on which the analyses will be performed.
+* **ConditionNumber** is the identifiant number of the guideline condition.
+* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
 * **TimeWindow** is the time window (s) on which we will record spike activity.
-* **record_duration**
+* **record_duration** is the total record duration which contains the time window.
 * **ExperimentalGroup** is the experimental group.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **MeanFiringRate (Hz)** is the mean firing rate on the channels for each conditions.
@@ -435,7 +435,7 @@ The output is an excel file which gives informations (burts duration, number of 
 
 There is what each column means:
 
-* **ConditionNumber** is the number of the condition.
+* **ConditionNumber** is the identifiant number of the guideline condition.
 * **channel** is the channel of interest.
 * **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
 * **burst** is the identifiant number of the burst you have in the considered channel.
@@ -444,7 +444,7 @@ There is what each column means:
 * **mean.isi.within.burst** is the mean time of inter spike interval (ISI).
 * **n.spike.in.channel** is the number of spikes in the considered channel.
 * **burst start**
-* **IBI**
+* **IBI** is the inter-burst interval (IBI) which is the time between two sequential bursts.
 * **analyzed.time** is the difference between the highest value and the lowest value of the time window.
 * **spike.freq.burst**
 
@@ -456,7 +456,7 @@ There is an overview of the second sheet called "Channel" :
 
 There is what each column means:
 
-* **ConditionNumber** is the number of the condition.
+* **ConditionNumber** is the identifiant number of the guideline condition.
 * **channel** is the channel of interest.
 * **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
 * **nb.burst** is the number of burst in the considered channel.
@@ -466,8 +466,8 @@ There is what each column means:
 * **nb.spikes.within** is the number of spikes inside the considered burst.
 * **nb.spikes.outside** is the number of spikes registered in the considered channel.
 * **spike.freq.in.burst**
-* **mean.isi.within.burst** is the mean interspike duration for spikes which are in the burst.
-* **IBI.mean**
+* **mean.isi.within.burst** is the mean interspike duration for spikes which are in the bursts.
+* **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition.
 
 #### Sheet 3: Condition
 
