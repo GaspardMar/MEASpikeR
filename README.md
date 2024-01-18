@@ -117,7 +117,7 @@ This is an overview of the guideline:
 ![](img/guidelinec4.png)
 ![](img/guidelinec512.png)
 
-There is an example data folder in the following link: https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYBepv9jWIjbBIhvK3xMF6GzQ?e=bY4vQS
+There is an example of a data folder with the guideline in the following link: https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYBepv9jWIjbBIhvK3xMF6GzQ?e=bY4vQS
 
 ## Step 3 : Create a MEASpikeR object
 
