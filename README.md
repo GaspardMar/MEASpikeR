@@ -162,7 +162,7 @@ dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA")
 
 ```
 
-![](img/output directory.png)
+![](img/output_directory.png)
 
 ## Step 5: Data visualisation functions
 
