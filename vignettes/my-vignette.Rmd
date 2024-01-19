@@ -59,303 +59,303 @@ library(MEASpikeR)
 
 ```
 
-## Step 1 Organise data in a folder called `\data`
+<!-- ## Step 1 Organise data in a folder called `\data` -->
 
-Data are generated automatically from recordings. **There are two types of data files: spike files and frequence files and these two types of file must be present in the folder.** All datasets should be stored in a folder called "data" and should be saved in `.csv` format. This is a view of the `\data` folder without the guideline (we will explain how to create it in the next paragraph):
+<!-- Data are generated automatically from recordings. **There are two types of data files: spike files and frequence files and these two types of file must be present in the folder.** All datasets should be stored in a folder called "data" and should be saved in `.csv` format. This is a view of the `\data` folder without the guideline (we will explain how to create it in the next paragraph): -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_without_guideline.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_without_guideline.png) -->
 
-## Step 2: Create the guideline file
+<!-- ## Step 2: Create the guideline file -->
 
-A guideline is also required to perform customized and multiple analyses of a single recording file. The guideline is an excel file which contains the  name of the recording file and some parameters to change, like for example, which channel to exclude or the time window which is interesting for analyses. We'll give an example of a white guideline file that **you'll have to fill in yourself.** 
+<!-- A guideline is also required to perform customized and multiple analyses of a single recording file. The guideline is an excel file which contains the  name of the recording file and some parameters to change, like for example, which channel to exclude or the time window which is interesting for analyses. We'll give an example of a white guideline file that **you'll have to fill in yourself.**  -->
 
-```{r include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
-# Number of conditions, for example here we want 5 conditions
-nb.condition <- 5
+<!-- ```{r include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE} -->
+<!-- # Number of conditions, for example here we want 5 conditions -->
+<!-- nb.condition <- 5 -->
 
-# To create the matrix with the twelve parameters we can play on.
-guideline <- matrix(rep(NA, nb.condition*12), nrow = nb.condition, ncol = 12)
+<!-- # To create the matrix with the twelve parameters we can play on. -->
+<!-- guideline <- matrix(rep(NA, nb.condition*12), nrow = nb.condition, ncol = 12) -->
 
-# Naming matrix columns
-colnames(guideline) <- c("ConditionNumber", # The number of the condition
-                         "Filename_spike", # The name of the spike csv file
-                         "Filename_freq", # The name of the freq csv file
-                         "removeChannel", # The identifier number of the channel (electrode) to remove
-                         "TimeLimitStart", # The time which indicates the beginning of the time window
-                         "TimeLimitEnd", # The time which indicates the end of the time window
-                         "TimeToExclude", # The time window to exlude for analyses
-                         "ExperimentalGroup", # The name of experimental group 
-                         "ExperimentalCondition", # The name of the drug
-                         "ExperimentalComment", # any comments
-                         "InformationFolderName",
-                         "AnalysisComment")
+<!-- # Naming matrix columns -->
+<!-- colnames(guideline) <- c("ConditionNumber", # The number of the condition -->
+<!--                          "Filename_spike", # The name of the spike csv file -->
+<!--                          "Filename_freq", # The name of the freq csv file -->
+<!--                          "removeChannel", # The identifier number of the channel (electrode) to remove -->
+<!--                          "TimeLimitStart", # The time which indicates the beginning of the time window -->
+<!--                          "TimeLimitEnd", # The time which indicates the end of the time window -->
+<!--                          "TimeToExclude", # The time window to exlude for analyses -->
+<!--                          "ExperimentalGroup", # The name of experimental group  -->
+<!--                          "ExperimentalCondition", # The name of the drug -->
+<!--                          "ExperimentalComment", # any comments -->
+<!--                          "InformationFolderName", -->
+<!--                          "AnalysisComment") -->
 
-# Turning the matrix into dataset
-guideline <- as.data.frame(guideline)
+<!-- # Turning the matrix into dataset -->
+<!-- guideline <- as.data.frame(guideline) -->
 
 
-```
+<!-- ``` -->
 
-If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package as described in the code below. You'll be able to fill in this guideline table directly in excel.
+<!-- If you want to fill in this guideline in excel, you can run the code above and save this empty table with the function `write_xlsx` from the `writexl` package as described in the code below. You'll be able to fill in this guideline table directly in excel. -->
 
-**Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function. 
+<!-- **Note:** Here the guideline is called "MEA_Spikes_ANA_R_guideline", it's the name by default in `dataset_filtering` function. If you want to save the guideline with an other name, it is possible, and you can put this name in `guideline_file_name` argument of `dataset_filtering` function.  -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
-# Install and import the "writexl" package
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE} -->
+<!-- # Install and import the "writexl" package -->
 
-install.packages("writexl")
-library(writexl)
+<!-- install.packages("writexl") -->
+<!-- library(writexl) -->
 
-# Specify the path of the Excel file where you want to save the guideline
-guideline_path <- "path_to_data_folder/MEA_Spikes_ANA_R_guideline.xlsx"
+<!-- # Specify the path of the Excel file where you want to save the guideline -->
+<!-- guideline_path <- "path_to_data_folder/MEA_Spikes_ANA_R_guideline.xlsx" -->
 
-# Save the guideline in excel format
-write_xlsx(guideline, path = guideline_path)
+<!-- # Save the guideline in excel format -->
+<!-- write_xlsx(guideline, path = guideline_path) -->
 
-```
+<!-- ``` -->
 
-**The guideline has to be saved in the `\data` folder.** This is a view of the `\data` folder:
+<!-- **The guideline has to be saved in the `\data` folder.** This is a view of the `\data` folder: -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file3.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file3.png) -->
 
-This is an overview of the guideline:
+<!-- This is an overview of the guideline: -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec13.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec13.png) -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec4.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec4.png) -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec512.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/guidelinec512.png) -->
 
-There is an example of a data folder with the guideline in the following link: https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYBepv9jWIjbBIhvK3xMF6GzQ?e=bY4vQS
+<!-- There is an example of a data folder with the guideline in the following link: https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYBepv9jWIjbBIhvK3xMF6GzQ?e=bY4vQS -->
 
-## Step 3 : Create a MEASpikeR object
+<!-- ## Step 3 : Create a MEASpikeR object -->
 
-The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. **This function is always the first one to use among the seven functions. If you modify the guideline, you have to rerun this function.** It operates as follow :
+<!-- The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. **This function is always the first one to use among the seven functions. If you modify the guideline, you have to rerun this function.** It operates as follow : -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Put the path to the data file
-data_path <- "C:/Users/prenom.nom/Desktop/MEA/data"
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"} -->
+<!-- # Put the path to the data file -->
+<!-- data_path <- "C:/Users/prenom.nom/Desktop/MEA/data" -->
 
-# Apply the function dataset_filtering
-out.MEA <- MEASpikeR::dataset_filtering(
-    data.path = data_path, 
-    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
-    sheet_used = 1,
-    MinFR = 0,
-    spike.sorting = FALSE,
-    min.spike = 10,
-    validation.index = "silhouette",
-    cutoff.index = 0.5,
-    nb.electrode = 64,
-    save.rDATA = TRUE,
-    filename = "MEA_DATA2ANALYZE"
-)
+<!-- # Apply the function dataset_filtering -->
+<!-- out.MEA <- MEASpikeR::dataset_filtering( -->
+<!--     data.path = data_path,  -->
+<!--     guideline_file_name = "MEA_Spikes_ANA_R_guideline", -->
+<!--     sheet_used = 1, -->
+<!--     MinFR = 0, -->
+<!--     spike.sorting = FALSE, -->
+<!--     min.spike = 10, -->
+<!--     validation.index = "silhouette", -->
+<!--     cutoff.index = 0.5, -->
+<!--     nb.electrode = 64, -->
+<!--     save.rDATA = TRUE, -->
+<!--     filename = "MEA_DATA2ANALYZE" -->
+<!-- ) -->
 
-```
+<!-- ``` -->
 
-If you want to know what the parameters correspond to, you can run `?MEASpikeR::dataset_filtering` and you will have access to the documentation of the function in the "Help" tab of the grap interface of Rstudio. Generally, you can do it with every function of the package, not only `dataset_filtering`. Spike sorting is a clustering of spike according to their shape, we can decide to do it or not. 
+<!-- If you want to know what the parameters correspond to, you can run `?MEASpikeR::dataset_filtering` and you will have access to the documentation of the function in the "Help" tab of the grap interface of Rstudio. Generally, you can do it with every function of the package, not only `dataset_filtering`. Spike sorting is a clustering of spike according to their shape, we can decide to do it or not.  -->
 
-In output, the function converts all the input data into an object of class MEASpikeR which contains the filtered data of each condition. **The same object of class MEASpikeR will be used as input to all the other functions of the package.**
+<!-- In output, the function converts all the input data into an object of class MEASpikeR which contains the filtered data of each condition. **The same object of class MEASpikeR will be used as input to all the other functions of the package.** -->
 
-Once this step executed, an Rdat file is saved in the `data_path` folder if you precised `save.Rdata = TRUE` in `dataset_filtering`. This Rdat file is called by default "MEA-DATA2ANALYZE" but you can choose another name with the `filename` argument of `dataset_filtering` function. This Rdat file can be used as input of all other functions too:
+<!-- Once this step executed, an Rdat file is saved in the `data_path` folder if you precised `save.Rdata = TRUE` in `dataset_filtering`. This Rdat file is called by default "MEA-DATA2ANALYZE" but you can choose another name with the `filename` argument of `dataset_filtering` function. This Rdat file can be used as input of all other functions too: -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file_rdat.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/data_file_rdat.png) -->
 
-## Step 4 (optional): Create an output directory
+<!-- ## Step 4 (optional): Create an output directory -->
 
-In all the functions, results are saved in a directory which the path correponds to the `output_directory` argument. You can create a folder in which you want all your results are saved. But you can also save results in a current directory (like for example your Desktop or Documents) and that's why this step is optional. You'll just have to precise the path to the directory in which you want save your results in the `output_directory` argument.
+<!-- In all the functions, results are saved in a directory which the path correponds to the `output_directory` argument. You can create a folder in which you want all your results are saved. But you can also save results in a current directory (like for example your Desktop or Documents) and that's why this step is optional. You'll just have to precise the path to the directory in which you want save your results in the `output_directory` argument. -->
 
-You can Run the code below to create it in your desktop with R or you can create it manually.
+<!-- You can Run the code below to create it in your desktop with R or you can create it manually. -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, higlight = TRUE}
-# Create an output directory
-dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA")
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, higlight = TRUE} -->
+<!-- # Create an output directory -->
+<!-- dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA") -->
 
-```
+<!-- ``` -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/output directory.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/output directory.png) -->
 
-## Step 5: Data visualisation functions
+<!-- ## Step 5: Data visualisation functions -->
 
-### spike_waveform
+<!-- ### spike_waveform -->
 
-This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed. This function operates as follow : 
+<!-- This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed. This function operates as follow :  -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
-# The path to the Rdat file obtained by dataset_filtering
-filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATA2ANALYZE.Rdat"
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE} -->
+<!-- # The path to the Rdat file obtained by dataset_filtering -->
+<!-- filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATA2ANALYZE.Rdat" -->
 
-# The path to the output directory created before (or you current directory)
-output_MEA <- "C:/Users/prenom.nom/Desktop/output MEA"
+<!-- # The path to the output directory created before (or you current directory) -->
+<!-- output_MEA <- "C:/Users/prenom.nom/Desktop/output MEA" -->
 
-# using the spike_waveform function with a MEASpikeR object in input
-MEASpikeR::spike_waveform(
-  object = out.MEA,
-  filt.data.path = NA,
-  output_directory = output_MEA,
-  spike_col = "forestgreen",
-  scale = "free",
-  mean_trace = TRUE,
-  col_mean_trace = "black",
-  color_viridis = FALSE,
-  format.save = "both"
-)
+<!-- # using the spike_waveform function with a MEASpikeR object in input -->
+<!-- MEASpikeR::spike_waveform( -->
+<!--   object = out.MEA, -->
+<!--   filt.data.path = NA, -->
+<!--   output_directory = output_MEA, -->
+<!--   spike_col = "forestgreen", -->
+<!--   scale = "free", -->
+<!--   mean_trace = TRUE, -->
+<!--   col_mean_trace = "black", -->
+<!--   color_viridis = FALSE, -->
+<!--   format.save = "both" -->
+<!-- ) -->
 
-# using the spike_waveform function with the Rdat file in input
-MEASpikeR::spike_waveform(
-  object = NA,
-  filt.data.path = filt.data.path,
-  output_directory = output_MEA,
-  spike_col = "forestgreen",
-  scale = "free",
-  mean_trace = TRUE,
-  col_mean_trace = "black",
-  color_viridis = FALSE,
-  format.save = "both"
-)
-
-```
-
-The output of this function is a folder called **outfile_waveform_** with date and time as suffix and saved in the output directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder.
-
-**Note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the folder.**
+<!-- # using the spike_waveform function with the Rdat file in input -->
+<!-- MEASpikeR::spike_waveform( -->
+<!--   object = NA, -->
+<!--   filt.data.path = filt.data.path, -->
+<!--   output_directory = output_MEA, -->
+<!--   spike_col = "forestgreen", -->
+<!--   scale = "free", -->
+<!--   mean_trace = TRUE, -->
+<!--   col_mean_trace = "black", -->
+<!--   color_viridis = FALSE, -->
+<!--   format.save = "both" -->
+<!-- ) -->
+
+<!-- ``` -->
+
+<!-- The output of this function is a folder called **outfile_waveform_** with date and time as suffix and saved in the output directory you precised in `output_directory` argument. What it contains depends on what you have precised in `format.save` argument. If you precised `several_pages`, It contains as many pdf files as there are guideline conditions (in our example 26). If you precised `one_page`, the folder will contain as many png files as there are conditions. And if you precised `both` (by default) it will save simultaneously "png" and "pdf" files in the folder. -->
+
+<!-- **Note that each file generated may take a minute to generate. The more conditions there are, the longer it will take to generate the folder.** -->
 
-**WARNING :** the path of the output directory doesn't have to be too long because there is a limit number of character to save these files.
+<!-- **WARNING :** the path of the output directory doesn't have to be too long because there is a limit number of character to save these files. -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/outfile_waveform_both.png)
-If we decide to open one of png files, we can see the spikes for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw a spike. 
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/outfile_waveform_both.png) -->
+<!-- If we decide to open one of png files, we can see the spikes for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw a spike.  -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/waveform_example2.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/waveform_example2.png) -->
 
-We can also open it in pdf version:
+<!-- We can also open it in pdf version: -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/waveform_example3.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/waveform_example3.png) -->
 
 
-### ISI 
-
-This function generates histogram of the inter-spike interval (ISI) which is the time between two sequential spikes. This histogram is draw for each electrode. This function operates as follow :
+<!-- ### ISI  -->
+
+<!-- This function generates histogram of the inter-spike interval (ISI) which is the time between two sequential spikes. This histogram is draw for each electrode. This function operates as follow : -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
-# Using the ISI function with the Rdat file as input
-MEASpikeR::ISI(
-  object = out.MEA,
-  filt.data.path = NA, 
-  output_directory = output_MEA,
-  col_hist = "darkgreen", 
-  bin.width = 50, 
-  interval.max = 300,
-  format.save = "both"
-)
-
-# Using the ISI function with the Rdat file as input
-MEASpikeR::ISI(
-  object = NA,
-  filt.data.path = filt.data.path, 
-  output_directory = output_MEA,
-  col_hist = "darkgreen", 
-  bin.width = 50, 
-  interval.max = 300,
-  format.save = "both"
-)
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE} -->
+<!-- # Using the ISI function with the Rdat file as input -->
+<!-- MEASpikeR::ISI( -->
+<!--   object = out.MEA, -->
+<!--   filt.data.path = NA,  -->
+<!--   output_directory = output_MEA, -->
+<!--   col_hist = "darkgreen",  -->
+<!--   bin.width = 50,  -->
+<!--   interval.max = 300, -->
+<!--   format.save = "both" -->
+<!-- ) -->
+
+<!-- # Using the ISI function with the Rdat file as input -->
+<!-- MEASpikeR::ISI( -->
+<!--   object = NA, -->
+<!--   filt.data.path = filt.data.path,  -->
+<!--   output_directory = output_MEA, -->
+<!--   col_hist = "darkgreen",  -->
+<!--   bin.width = 50,  -->
+<!--   interval.max = 300, -->
+<!--   format.save = "both" -->
+<!-- ) -->
 
-```
+<!-- ``` -->
 
-The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as suffix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the output directory you precised in `output_directory` argument.
+<!-- The output of this function depends on what you have precised in 'format.save' argument. If you precised "several_pages", the output is a folder called **ISIh_outfiles_** with date and time as suffix. It contains as many pdf files as there are guideline conditions (in our example 26). If you precised "one_page", the folder will contain as many png files as there are conditions. And if you precised "both" it will save simultaneously "png" and "pdf" files in the folder. The folder will be saved in the output directory you precised in `output_directory` argument. -->
 
-If we decide to open one of png files, we can see the ISI histogram for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw an histogram. 
+<!-- If we decide to open one of png files, we can see the ISI histogram for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw an histogram.  -->
 
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/ISI_example2.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/ISI_example2.png) -->
 
-We can also open it in pdf version:
+<!-- We can also open it in pdf version: -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/ISI_example3.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/ISI_example3.png) -->
 
-### spikeraster_heatmap
+<!-- ### spikeraster_heatmap -->
 
-This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrode of the matrix. This function operates as follow : 
+<!-- This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrode of the matrix. This function operates as follow :  -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the spikeraster_heatmap function with the MEASpikeR object as input
-MEASpikeR::spikeraster_heatmap(
-  object = out.MEA,
-  filt.data.path = NA,
-  output_directory = output_MEA,
-  scale = "free",
-  end_record_color = "red",
-  spike_col = "black",
-  add.burst = TRUE,
-  burst.detection.method = "MI",
-  max_ISI_start_burst = 170,
-  max_ISI_end_burst = 300,
-  min_IBI = 50,
-  min_spike_in_burst = 5,
-  min_burst_duration = 50,
-  palette = "viridis2",
-  col.cell.border = "gray85"
-)
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"} -->
+<!-- # Using the spikeraster_heatmap function with the MEASpikeR object as input -->
+<!-- MEASpikeR::spikeraster_heatmap( -->
+<!--   object = out.MEA, -->
+<!--   filt.data.path = NA, -->
+<!--   output_directory = output_MEA, -->
+<!--   scale = "free", -->
+<!--   end_record_color = "red", -->
+<!--   spike_col = "black", -->
+<!--   add.burst = TRUE, -->
+<!--   burst.detection.method = "MI", -->
+<!--   max_ISI_start_burst = 170, -->
+<!--   max_ISI_end_burst = 300, -->
+<!--   min_IBI = 50, -->
+<!--   min_spike_in_burst = 5, -->
+<!--   min_burst_duration = 50, -->
+<!--   palette = "viridis2", -->
+<!--   col.cell.border = "gray85" -->
+<!-- ) -->
 
-# Using the spikeraster_heatmap function with the Rdat file as input
-MEASpikeR::spikeraster_heatmap(
-  object = NA,
-  filt.data.path = filt.data.path,
-  output_directory = output_MEA,
-  scale = "free",
-  end_record_color = "red",
-  spike_col = "black",
-  add.burst = TRUE,
-  burst.detection.method = "MI",
-  max_ISI_start_burst = 170,
-  max_ISI_end_burst = 300,
-  min_IBI = 50,
-  min_spike_in_burst = 5,
-  min_burst_duration = 50,
-  palette = "viridis2",
-  col.cell.border = "gray85"
-)
+<!-- # Using the spikeraster_heatmap function with the Rdat file as input -->
+<!-- MEASpikeR::spikeraster_heatmap( -->
+<!--   object = NA, -->
+<!--   filt.data.path = filt.data.path, -->
+<!--   output_directory = output_MEA, -->
+<!--   scale = "free", -->
+<!--   end_record_color = "red", -->
+<!--   spike_col = "black", -->
+<!--   add.burst = TRUE, -->
+<!--   burst.detection.method = "MI", -->
+<!--   max_ISI_start_burst = 170, -->
+<!--   max_ISI_end_burst = 300, -->
+<!--   min_IBI = 50, -->
+<!--   min_spike_in_burst = 5, -->
+<!--   min_burst_duration = 50, -->
+<!--   palette = "viridis2", -->
+<!--   col.cell.border = "gray85" -->
+<!-- ) -->
 
-```
+<!-- ``` -->
 
-The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the output directory you precised in the `output_directory` argument. There is a view of this pdf file : 
+<!-- The output of this function is a pdf file which contains a raster plot and a heatmap per condition. This file will be saved in the output directory you precised in the `output_directory` argument. There is a view of this pdf file :  -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/rasterplot_heatmap.png)
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/rasterplot_heatmap.png) -->
 
-### spike_rate_plot
+<!-- ### spike_rate_plot -->
 
-This function can be used to see for each condition at which time spikes have the higher rate 
+<!-- This function can be used to see for each condition at which time spikes have the higher rate  -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the spike_rate_plot function with the MEASpikeR object as input
-MEASpikeR::spike_rate_plot(
-                     object = out.MEA,
-                     filt.data.path = NA, 
-                     output_directory = output_MEA,
-                     spike_col = "forestgreen", 
-                     plot = "line"
-                     )
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"} -->
+<!-- # Using the spike_rate_plot function with the MEASpikeR object as input -->
+<!-- MEASpikeR::spike_rate_plot( -->
+<!--                      object = out.MEA, -->
+<!--                      filt.data.path = NA,  -->
+<!--                      output_directory = output_MEA, -->
+<!--                      spike_col = "forestgreen",  -->
+<!--                      plot = "line" -->
+<!--                      ) -->
 
-# Using the spike_rate_plot function with the Rdat file as input
-MEASpikeR::spike_rate_plot(
-                     object = NA,
-                     filt.data.path = filt.data.path, 
-                     output_directory = output_MEA,
-                     spike_col = "forestgreen", 
-                     plot = "line"
-                     )
+<!-- # Using the spike_rate_plot function with the Rdat file as input -->
+<!-- MEASpikeR::spike_rate_plot( -->
+<!--                      object = NA, -->
+<!--                      filt.data.path = filt.data.path,  -->
+<!--                      output_directory = output_MEA, -->
+<!--                      spike_col = "forestgreen",  -->
+<!--                      plot = "line" -->
+<!--                      ) -->
 
-```
+<!-- ``` -->
 
-In output of this function, we obtain as many pictures as number of conditions in the guideline and for example, there is one example of spike detection rate graphic : 
+<!-- In output of this function, we obtain as many pictures as number of conditions in the guideline and for example, there is one example of spike detection rate graphic :  -->
 
-![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/example_detection_rate.png)
-In addition, this function returns an excel file called "AWSDR" with date and time as suffix and contains as many sheets as there are conditions. Each sheet contains a table with two columns. The first column indicates time, and the second column indicates the firing rate.
+<!-- ![](C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/img_vignette/example_detection_rate.png) -->
+<!-- In addition, this function returns an excel file called "AWSDR" with date and time as suffix and contains as many sheets as there are conditions. Each sheet contains a table with two columns. The first column indicates time, and the second column indicates the firing rate. -->
 
-These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument.
+<!-- These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument. -->
 
-## Step 6: Quantitative data analyses functions
+<!-- ## Step 6: Quantitative data analyses functions -->
 
-### firing_rate
+<!-- ### firing_rate -->
 
 <!-- This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline. This function operates as follow : -->
 
