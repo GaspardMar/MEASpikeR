@@ -446,11 +446,11 @@ MEASpikeR::burst_detection(
 
 ```
 
+The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument.
+
 #### Sheet 1: Burst
 
 There is an overview of the first sheet called "Burst":
-
-The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument.
 
 ![](img/burst_detection_sheet1.png)
 
