@@ -274,7 +274,7 @@ We can also open it in pdf version:
 
 ### spikeraster_heatmap
 
-This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrod of the matrix. This function operates as follow : 
+This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrode of the matrix. This function operates as follow : 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Using the spikeraster_heatmap function with the MEASpikeR object as input
@@ -357,225 +357,225 @@ These pictures and this excel file are saved in the output directory you have pr
 
 ### firing_rate
 
-This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline. This function operates as follow :
+<!-- This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline. This function operates as follow : -->
 
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
-# Using the firing_rate function with the MEASpikeR object as input
-MEASpikeR::firing_rate(
-  object = out.MEA,
-  filt.data.path = NA,
-  output_directory = output_MEA)
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE} -->
+<!-- # Using the firing_rate function with the MEASpikeR object as input -->
+<!-- MEASpikeR::firing_rate( -->
+<!--   object = out.MEA, -->
+<!--   filt.data.path = NA, -->
+<!--   output_directory = output_MEA) -->
 
-# Using the firing_rate function with the Rdat file as input
-MEASpikeR::firing_rate(
-  object = NA,
-  filt.data.path = filt.data.path,
-  output_directory = output_MEA)
+<!-- # Using the firing_rate function with the Rdat file as input -->
+<!-- MEASpikeR::firing_rate( -->
+<!--   object = NA, -->
+<!--   filt.data.path = filt.data.path, -->
+<!--   output_directory = output_MEA) -->
 
-```
+<!-- ``` -->
 
-The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the output directory you have precised in the `output_directory` argument.
+<!-- The output of this function is this excel file which indicates the firing rate for each channel not excluded in a guideline condition. This excel file will be saved in the output directory you have precised in the `output_directory` argument. -->
 
-#### Sheet 1: FiringRate
+<!-- #### Sheet 1: FiringRate -->
 
-The first sheet called "FiringRate" indicates the firing rate for each channel not excluded in the guideline for each condition, there is an overview of the first sheet.
+<!-- The first sheet called "FiringRate" indicates the firing rate for each channel not excluded in the guideline for each condition, there is an overview of the first sheet. -->
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
-fr <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx")
-fr2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx", sheet = 2)
-
-
-knitr::kable(head(fr[,1:4]), format = "html", align = "c")
-
-```
-
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
-
-knitr::kable(head(fr[,5:12]), format = "html", align = "c")
-
-```
-
-There is what each column means:
-
-* **ConditionNumber** is the identifiant number of the guideline condition.
-* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
-* **TimeWindow** is the time window (s) on which we will record spike activity.
-* **record_duration** is the total record duration which contains the time window.
-* **ExperimentalGroup** is the experimental group.
-* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
-* **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
-* **nb.spike** is the number of spikes observed during the time window.
-* **TaN** is the difference between the highest value and the lowest value of the time window.
-* **TeX**
-
-#### Sheet 2: MFR
-
-The second sheet called "MFR" is a summary of the firing rate for each conditions of the guideline. There is an overview of the second sheet:
-
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
-
-knitr::kable(head(fr2[,1:4]), format = "html", align = "c")
-knitr::kable(head(fr2[,5:8]), format = "html", align = "c")
-knitr::kable(head(fr2[,9:13]), format = "html", align = "c")
-
-```
-
-There is what each column means:
-
-* **ConditionNumber** is the identifiant number of the condition.
-* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
-* **TimeWindow** is the time window (s) on which we will record spike activity.
-* **record_duration** is the total record duration which contains the time window.
-* **ExperimentalGroup** is the experimental group.
-* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
-* **MeanFiringRate (Hz)** is the mean firing rate on the channels for each conditions.
-* **SD** is the standard error of the firing rate on the channels for each conditions.
-* **nb.active.electrodes** is the count of channels not excluded according to the condition.
-* **nb.ch.excluded** is the count of channels excluded according to the condition.
-* **%active.electrodes**
-* **TeX**
-* **TaN** is the difference between the highest value and the lowest value of the time window.
-
-#### sheet 3: guideline
-
-It's the same as the guideline in the `\data` folder.
-
-### burst_detection
-
-This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst. It operates as follow: 
-
-```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
-# Using the firing_rate function with the MEASpikeR object as input
-MEASpikeR::burst_detection(
-  object = out.MEA,
-  filt.data.path = NA,
-  output_directory = output_MEA,
-  burst.detection.method = "MI",
-  max_ISI_start_burst = 170,
-  max_ISI_end_burst = 300,
-  min_IBI = 50,
-  min_spike_in_burst = 5,
-  min_burst_duration = 50
-)
-
-# Using the firing_rate function with the Rdat file as input
-MEASpikeR::burst_detection(
-  object = NA,
-  filt.data.path = filt.data.path,
-  output_directory = output_MEA,
-  burst.detection.method = "MI",
-  max_ISI_start_burst = 170,
-  max_ISI_end_burst = 300,
-  min_IBI = 50,
-  min_spike_in_burst = 5,
-  min_burst_duration = 50
-)
-
-```
-
-The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument.
-
-#### Sheet 1: Burst
-
-There is an overview of the first sheet called "Burst":
-
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
-bd <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx")
-bd2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 2)
-bd3 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 3)
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
+<!-- fr <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx") -->
+<!-- fr2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/FR&MFR_2023-10-09_17h18m00s_BioInfoSup.xlsx", sheet = 2) -->
 
 
-knitr::kable(head(bd[,1:7]), format = "html", align = "c")
+<!-- knitr::kable(head(fr[,1:4]), format = "html", align = "c") -->
 
-```
+<!-- ``` -->
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
 
-knitr::kable(head(bd[,8:12]), format = "html", align = "c")
+<!-- knitr::kable(head(fr[,5:12]), format = "html", align = "c") -->
 
-```
+<!-- ``` -->
 
-There is what each column means:
+<!-- There is what each column means: -->
 
-* **ConditionNumber** is the identifiant number of the guideline condition.
-* **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
-* **burst** is the identifiant number of the burst you have in the considered channel.
-* **n.spike.in.burst** is the number of spikes in the considered burst.
-* **burst_duration** is the burst time.
-* **mean.isi.within.burst** is the mean time of inter spike interval (ISI) within a burst.
-* **n.spike.in.channel** is the number of spikes in the considered channel.
-* **burst start**
-* **IBI** is the inter_burst interval (IBI) which is the time between two sequential bursts.
-* **analyzed.time** is the difference between the highest value and the lowest value of the time window.
-* **spike.freq.burst**
+<!-- * **ConditionNumber** is the identifiant number of the guideline condition. -->
+<!-- * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed. -->
+<!-- * **TimeWindow** is the time window (s) on which we will record spike activity. -->
+<!-- * **record_duration** is the total record duration which contains the time window. -->
+<!-- * **ExperimentalGroup** is the experimental group. -->
+<!-- * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL). -->
+<!-- * **channel** is the channel of interest. -->
+<!-- * **cluster_id** is the ID of the cluster if you decided to perform spike sorting. -->
+<!-- * **nb.spike** is the number of spikes observed during the time window. -->
+<!-- * **TaN** is the difference between the highest value and the lowest value of the time window. -->
+<!-- * **TeX** -->
 
-#### Sheet 2: Channel
+<!-- #### Sheet 2: MFR -->
 
-There is an overview of the second sheet called "Channel" :
+<!-- The second sheet called "MFR" is a summary of the firing rate for each conditions of the guideline. There is an overview of the second sheet: -->
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
 
-knitr::kable(head(bd2[,1:7]), format = "html", align = "c")
-knitr::kable(head(bd2[,8:12]), format = "html", align = "c")
+<!-- knitr::kable(head(fr2[,1:4]), format = "html", align = "c") -->
+<!-- knitr::kable(head(fr2[,5:8]), format = "html", align = "c") -->
+<!-- knitr::kable(head(fr2[,9:13]), format = "html", align = "c") -->
 
-```
+<!-- ``` -->
 
-There is what each column means:
+<!-- There is what each column means: -->
 
-* **ConditionNumber** is the number of the guideline condition.
-* **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
-* **nb.burst** is the number of burst in the considered channel.
-* **burst.rate**
-* **burst.rate.min**
-* **burst.mean.duration** is the burst mean duration.
-* **nb.spikes.within** is the number of spikes inside the considered burst.
-* **nb.spikes.outside** is the number of spikes registered in the considered channel.
-* **spike.freq.in.burst**
-* **mean.isi.within.burst** is the mean interspike duration for spikes which are in the burst.
-* **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition.
+<!-- * **ConditionNumber** is the identifiant number of the condition. -->
+<!-- * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed. -->
+<!-- * **TimeWindow** is the time window (s) on which we will record spike activity. -->
+<!-- * **record_duration** is the total record duration which contains the time window. -->
+<!-- * **ExperimentalGroup** is the experimental group. -->
+<!-- * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL). -->
+<!-- * **MeanFiringRate (Hz)** is the mean firing rate on the channels for each conditions. -->
+<!-- * **SD** is the standard error of the firing rate on the channels for each conditions. -->
+<!-- * **nb.active.electrodes** is the count of channels not excluded according to the condition. -->
+<!-- * **nb.ch.excluded** is the count of channels excluded according to the condition. -->
+<!-- * **%active.electrodes** -->
+<!-- * **TeX** -->
+<!-- * **TaN** is the difference between the highest value and the lowest value of the time window. -->
 
-#### Sheet 3: Condition
+<!-- #### sheet 3: guideline -->
 
-This sheet is a summary of burst analysis for each condition.
+<!-- It's the same as the guideline in the `\data` folder. -->
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
+<!-- ### burst_detection -->
 
-knitr::kable(head(bd3[,1:4]), format = "html", align = "c")
-knitr::kable(head(bd3[,5:9]), format = "html", align = "c")
-knitr::kable(head(bd3[,10:13]), format = "html", align = "c")
-knitr::kable(head(bd3[,14:17]), format = "html", align = "c")
+<!-- This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst. It operates as follow:  -->
 
-```
+<!-- ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"} -->
+<!-- # Using the firing_rate function with the MEASpikeR object as input -->
+<!-- MEASpikeR::burst_detection( -->
+<!--   object = out.MEA, -->
+<!--   filt.data.path = NA, -->
+<!--   output_directory = output_MEA, -->
+<!--   burst.detection.method = "MI", -->
+<!--   max_ISI_start_burst = 170, -->
+<!--   max_ISI_end_burst = 300, -->
+<!--   min_IBI = 50, -->
+<!--   min_spike_in_burst = 5, -->
+<!--   min_burst_duration = 50 -->
+<!-- ) -->
 
-There is what each column means:
+<!-- # Using the firing_rate function with the Rdat file as input -->
+<!-- MEASpikeR::burst_detection( -->
+<!--   object = NA, -->
+<!--   filt.data.path = filt.data.path, -->
+<!--   output_directory = output_MEA, -->
+<!--   burst.detection.method = "MI", -->
+<!--   max_ISI_start_burst = 170, -->
+<!--   max_ISI_end_burst = 300, -->
+<!--   min_IBI = 50, -->
+<!--   min_spike_in_burst = 5, -->
+<!--   min_burst_duration = 50 -->
+<!-- ) -->
 
-* **ConditionNumber** is the identifiant number of the guideline condition.
-* **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
-* **record_duration** is the record duration.
-* **TW** is the time window of interest for burst analysis for each condition.
-* **TeX**
-* **time.analyzed** is the difference between the highest value and the lowest value of TW.
-* **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
-* **ExperimentalGroup** is the experimental group.
-* **nb.burst** is the number of burst observed within each condition.
-* **burst.rate** is the burst rate within each condition.
-* **burst.rate.min**
-* **burst.mean.duration** is the burst mean duration within each condition.
-* **nb.spikes.within** is the sum of the number of spikes observed within each burst of each condition.
-* **nb.spikes.outside** is the sum of the number of spikes observed outside each burst of each condition.
-* **spike.freq.in.burst**
-* **mean.isi.within.burst** is the mean duration of interspike interval of each spike within each burst of
-each condition.
-* **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition.
+<!-- ``` -->
 
-#### Sheet 4: Guideline
+<!-- The output is an excel file which gives informations (burts duration, number of spikes in the burst, etc.) about bursts observed per channel not excluded in a guideline condition. The excel file is saved in the output directory you have precised in the `output_directory` argument. -->
 
-It's the same as the guideline in the `\data` folder.
+<!-- #### Sheet 1: Burst -->
 
-## References
+<!-- There is an overview of the first sheet called "Burst": -->
 
-Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). **_MEASpikeR_: a new package
-for spike analysis and visualization of _in vitro_ MEA data**.
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
+<!-- bd <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx") -->
+<!-- bd2 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 2) -->
+<!-- bd3 <- openxlsx::read.xlsx("C:/Users/gaspard.martet/OneDrive - ICM/Documents/MEA/Burst_Analysis_outfile_2023-10-09_17h22m15s_BioInfoSup.xlsx", sheet = 3) -->
+
+
+<!-- knitr::kable(head(bd[,1:7]), format = "html", align = "c") -->
+
+<!-- ``` -->
+
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
+
+<!-- knitr::kable(head(bd[,8:12]), format = "html", align = "c") -->
+
+<!-- ``` -->
+
+<!-- There is what each column means: -->
+
+<!-- * **ConditionNumber** is the identifiant number of the guideline condition. -->
+<!-- * **channel** is the channel of interest. -->
+<!-- * **cluster_id** is the ID of the cluster if you decided to perform spike sorting. -->
+<!-- * **burst** is the identifiant number of the burst you have in the considered channel. -->
+<!-- * **n.spike.in.burst** is the number of spikes in the considered burst. -->
+<!-- * **burst_duration** is the burst time. -->
+<!-- * **mean.isi.within.burst** is the mean time of inter spike interval (ISI) within a burst. -->
+<!-- * **n.spike.in.channel** is the number of spikes in the considered channel. -->
+<!-- * **burst start** -->
+<!-- * **IBI** is the inter_burst interval (IBI) which is the time between two sequential bursts. -->
+<!-- * **analyzed.time** is the difference between the highest value and the lowest value of the time window. -->
+<!-- * **spike.freq.burst** -->
+
+<!-- #### Sheet 2: Channel -->
+
+<!-- There is an overview of the second sheet called "Channel" : -->
+
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
+
+<!-- knitr::kable(head(bd2[,1:7]), format = "html", align = "c") -->
+<!-- knitr::kable(head(bd2[,8:12]), format = "html", align = "c") -->
+
+<!-- ``` -->
+
+<!-- There is what each column means: -->
+
+<!-- * **ConditionNumber** is the number of the guideline condition. -->
+<!-- * **channel** is the channel of interest. -->
+<!-- * **cluster_id** is the ID of the cluster if you decided to perform spike sorting. -->
+<!-- * **nb.burst** is the number of burst in the considered channel. -->
+<!-- * **burst.rate** -->
+<!-- * **burst.rate.min** -->
+<!-- * **burst.mean.duration** is the burst mean duration. -->
+<!-- * **nb.spikes.within** is the number of spikes inside the considered burst. -->
+<!-- * **nb.spikes.outside** is the number of spikes registered in the considered channel. -->
+<!-- * **spike.freq.in.burst** -->
+<!-- * **mean.isi.within.burst** is the mean interspike duration for spikes which are in the burst. -->
+<!-- * **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition. -->
+
+<!-- #### Sheet 3: Condition -->
+
+<!-- This sheet is a summary of burst analysis for each condition. -->
+
+<!-- ```{r, echo = FALSE, tidy = TRUE, eval = FALSE, warning = FALSE, message = FALSE} -->
+
+<!-- knitr::kable(head(bd3[,1:4]), format = "html", align = "c") -->
+<!-- knitr::kable(head(bd3[,5:9]), format = "html", align = "c") -->
+<!-- knitr::kable(head(bd3[,10:13]), format = "html", align = "c") -->
+<!-- knitr::kable(head(bd3[,14:17]), format = "html", align = "c") -->
+
+<!-- ``` -->
+
+<!-- There is what each column means: -->
+
+<!-- * **ConditionNumber** is the identifiant number of the guideline condition. -->
+<!-- * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed. -->
+<!-- * **record_duration** is the record duration. -->
+<!-- * **TW** is the time window of interest for burst analysis for each condition. -->
+<!-- * **TeX** -->
+<!-- * **time.analyzed** is the difference between the highest value and the lowest value of TW. -->
+<!-- * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL). -->
+<!-- * **ExperimentalGroup** is the experimental group. -->
+<!-- * **nb.burst** is the number of burst observed within each condition. -->
+<!-- * **burst.rate** is the burst rate within each condition. -->
+<!-- * **burst.rate.min** -->
+<!-- * **burst.mean.duration** is the burst mean duration within each condition. -->
+<!-- * **nb.spikes.within** is the sum of the number of spikes observed within each burst of each condition. -->
+<!-- * **nb.spikes.outside** is the sum of the number of spikes observed outside each burst of each condition. -->
+<!-- * **spike.freq.in.burst** -->
+<!-- * **mean.isi.within.burst** is the mean duration of interspike interval of each spike within each burst of -->
+<!-- each condition. -->
+<!-- * **IBI.mean** is the mean duration of an inter-burst interval per channel and per condition. -->
+
+<!-- #### Sheet 4: Guideline -->
+
+<!-- It's the same as the guideline in the `\data` folder. -->
+
+<!-- ## References -->
+
+<!-- Dalle C., Martet G., Kaddouri Y., Rebola N., Whitmarsh S., Lejeune FX.(2023). **_MEASpikeR_: a new package -->
+<!-- for spike analysis and visualization of _in vitro_ MEA data**. -->
