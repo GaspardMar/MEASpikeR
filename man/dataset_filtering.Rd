@@ -25,7 +25,7 @@ dataset_filtering(
 
 \item{sheet_used}{Number indicating the excel sheet where the guideline is located (by default 1)}
 
-\item{MinFR}{Minimum firing rate to consider (by default 0)}
+\item{MinFR}{Minimum number of spike considered in the guideline time window.}
 
 \item{spike.sorting}{Boolean, if TRUE a spike sorting is performed (by default FALSE)}
 

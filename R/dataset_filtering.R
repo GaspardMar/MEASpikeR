@@ -5,7 +5,7 @@
 #' @param data.path The path directory to the folder containing the data and the guideline.
 #' @param guideline_file_name The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")
 #' @param sheet_used Number indicating the excel sheet where the guideline is located (by default 1)
-#' @param MinFR Minimum firing rate to consider (by default 0)
+#' @param MinFR Minimum number of spike considered in the guideline time window.
 #' @param spike.sorting Boolean, if TRUE a spike sorting is performed (by default FALSE)
 #' @param min.spike Minimum number of spikes in the considered time window to be used during spike sorting (by default 10)
 #' @param validation.index The method used to determine the optimal number of clusters (by default "silhouette")
