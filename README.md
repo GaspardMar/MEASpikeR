@@ -121,7 +121,9 @@ There is an example of a data folder with the guideline in the following link: h
 
 ## Step 3 : Create a MEASpikeR object
 
-The `dataset_filtering` function extracts essential information from the guideline to create new filtered datas from `.csv` files in "data" folder. These new data will be saved in an object of class `MEASpikeR`, and if you like, in a `.Rdat` file and these data will be used for analyses. **This function is always the first one to use among the seven functions. If you modify the guideline, you have to rerun this function.** It operates as follow :
+The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the package functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATA2ANALYZE.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
+
+**This function must always be launched first to be able to use the other functions. If the guideline is modified, it must also be relaunched to update the MEASpikeR object.**
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Put the path to the data file
@@ -143,12 +145,11 @@ out.MEA <- MEASpikeR::dataset_filtering(
 )
 
 ```
+**Help:** For a detailed description of the function and its arguments, you can use the R command `?MEASpikeR::dataset_filtering` to access the documentation in the Help window of R Studio. Similarly, you can also access the help for other functions in the package using the same method.
 
-If you want to know what the parameters correspond to, you can run `?MEASpikeR::dataset_filtering` and you will have access to the documentation of the function in the "Help" tab of the grap interface of Rstudio. Generally, you can do it with every function of the package, not only `dataset_filtering`. Spike sorting is a clustering of spike according to their shape, we can decide to do it or not. 
+**Spike sorting:** In the arguments, it is still possible to activate a "spike sorting" feature (`spike.sorting=TRUE`) that allows grouping recordings from the same channel based on the signal’s shape, and in certain cases, identifying artifact signals. The implemented approach for the spike sorting uses four components of the principal component analysis (PCA) of signals, along with a classification using the k-means method to identify potential clusters. To determine the number of clusters, the function utilizes several indices implemented in the R package NbClust (by default, the "silhouette" method). It is emphasized to the user that spike sorting is not the primary goal of the MEASpikeR package, and more sophisticated methods exist in other specialized softwares.
 
-In output, the function converts all the input data into an object of class MEASpikeR which contains the filtered data of each condition. **The same object of class MEASpikeR will be used as input to all the other functions of the package.**
-
-Once this step executed, an Rdat file is saved in the `data_path` folder if you precised `save.Rdata = TRUE` in `dataset_filtering`. This Rdat file is called by default "MEA_DATA2ANALYZE" but you can choose another name with the `filename` argument of `dataset_filtering` function. This Rdat file can be used as input of all other functions too:
+**Outputs:** The output object contains the filtered data for each condition (a data.frame per condition). This step is carried out according to the “guideline”, allowing for customized data analysis. For example, by selecting recording time windows, excluding certain electrodes, or choosing only electrodes with sufficient signal (by specifying the `minFR` and/or `min.spike` arguments). All outputs (also including the guideline, and data summary tables) are stored in an object of class “MEASpikeR” and/or a .RData file that are generated to be used as inputs of the other functions of the package.
 
 ![](img/data_file_rdat.png)
 
@@ -170,7 +171,7 @@ dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA")
 
 ### spike_waveform
 
-This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed. This function operates as follow : 
+This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed. 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # The path to the Rdat file obtained by dataset_filtering
@@ -225,7 +226,7 @@ We can also open it in pdf version:
 
 ### ISI 
 
-This function generates histogram of the inter-spike interval (ISI) which is the time between two sequential spikes. This histogram is draw for each electrode. This function operates as follow :
+This function generates histogram of the inter-spike interval (ISI) which is the time between two sequential spikes. This histogram is draw for each electrode.
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Using the ISI function with the Rdat file as input
@@ -264,7 +265,7 @@ We can also open it in pdf version:
 
 ### spikeraster_heatmap
 
-This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrod of the matrix. This function operates as follow : 
+This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrod of the matrix.
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Using the spikeraster_heatmap function with the MEASpikeR object as input
@@ -313,7 +314,7 @@ The output of this function is a pdf file which contains a raster plot and a hea
 
 ### spike_rate_plot
 
-This function can be used to see for each condition at which time spikes have the higher rate 
+This function can be used to see for each condition at which time spikes have the higher rate. 
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Using the spike_rate_plot function with the MEASpikeR object as input
@@ -348,7 +349,7 @@ These pictures and this excel file are saved in the output directory you have pr
 
 ### firing_rate
 
-This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline. This function operates as follow :
+This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline.
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # Using the firing_rate function with the MEASpikeR object as input
@@ -379,13 +380,13 @@ There is what each column means:
 * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
 * **TimeWindow** is the time window (s) on which we will record spike activity.
 * **record_duration** is the total record duration which contains the time window.
-* **ExperimentalGroup** is the experimental group.
+* **ExperimentalGroup** is the name of the experimental group which depends of `Experimentalondition`.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **cluster_id** is the identifiant number of the cluster if you decided to perform spike sorting.
 * **nb.spike** is the number of spikes observed during the time window.
 * **TaN** is the difference between the highest value and the lowest value of the time window.
-* **TeX**
+* **TeX** is the time to exclude from the analysis.
 
 #### Sheet 2: MFR
 
@@ -406,7 +407,7 @@ There is what each column means:
 * **nb.active.electrodes** is the count of channels not excluded according to the condition.
 * **nb.ch.excluded** is the count of channels excluded according to the condition.
 * **%active.electrodes**
-* **TeX**
+* **TeX** is the time to exclude from the analysis.
 * **TaN** is the difference between the highest value and the lowest value of the time window.
 
 #### sheet 3: guideline
@@ -415,7 +416,7 @@ It's the same as the guideline in the `\data` folder.
 
 ### burst_detection
 
-This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst. It operates as follow: 
+This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst.
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE, results = "hide"}
 # Using the firing_rate function with the MEASpikeR object as input
@@ -504,7 +505,7 @@ There is what each column means:
 * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
 * **record_duration** is the record duration.
 * **TW** is the time window of interest for burst analysis for each condition.
-* **TeX**
+* **TeX** is the time to exclude from the analysis.
 * **time.analyzed** is the difference between the highest value and the lowest value of TW.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **ExperimentalGroup** is the experimental group.
