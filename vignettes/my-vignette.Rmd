@@ -393,7 +393,7 @@ There is what each column means:
 * **ExperimentalGroup** is the name of the experimental group which depends of `Experimentalondition`.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **cluster_id** is the identifiant number of the cluster if you decided to perform spike sorting.
 * **nb.spike** is the number of spikes observed during the time window.
 * **TaN** is the difference between the highest value and the lowest value of the time window. It's the time we keep for analysis.
 * **TeX** is the time to exclude from the analysis.
@@ -490,7 +490,7 @@ There is what each column means:
 
 * **ConditionNumber** is the number of the guideline condition.
 * **channel** is the channel of interest.
-* **cluster_id** is the ID of the cluster if you decided to perform spike sorting.
+* **cluster_id** is the identifiant number of the cluster if you decided to perform spike sorting.
 * **nb.burst** is the number of burst in the considered channel.
 * **burst.rate**
 * **burst.rate.min**
@@ -515,7 +515,7 @@ There is what each column means:
 * **ShortFilename** is the name of the `.csv` file in the `\data` folder on which the analyses will be performed.
 * **record_duration** is the record duration.
 * **TW** is the time window of interest for burst analysis for each condition.
-* **TeX**
+* **TeX** is the time to exclude from the analysis.
 * **time.analyzed** is the difference between the highest value and the lowest value of TW.
 * **ExperimentalCondition** is the experimental condition (baseline, DMSO or DL).
 * **ExperimentalGroup** is the experimental group.
