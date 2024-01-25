@@ -36,7 +36,7 @@ install.packages("devtools")
 # for loading devtools package
 library(devtools)
 
-# for installing the MEASpikeR package
+# for installing the MEASpikeR package with the vignette
 devtools::install_gitlab("icm-institute/DAC/biostats/MEASpikeR", build_vignettes = TRUE)
 
 # for loading the MEASpikeR package
