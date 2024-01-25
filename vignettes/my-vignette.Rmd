@@ -1,6 +1,6 @@
 ---
 title: "Introduction to MEASpikeR"
-author: "Gaspard Martet"
+author: "François-Xavier Lejeune, Gaspard Martet, Carine Dalle"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
