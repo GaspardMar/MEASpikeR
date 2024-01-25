@@ -161,6 +161,7 @@ The output of this function is a folder called **outfile_waveform_** with date a
 **WARNING :** the path of the output directory doesn't have to be too long because there is a limit number of character to save these files.
 
 ![](img/outfile_waveform_both.png)
+
 If we decide to open one of png files, we can see the spikes for each electrods. a cross indicates a chanel excluded under guideline conditions. If there is a blank in one case, it means that there is not enough data to draw a spike.
 
 ![](img/waveform_example2.png)
@@ -287,6 +288,7 @@ MEASpikeR::spike_rate_plot(
 In output of this function, we obtain as many pictures as number of conditions in the guideline and for example, there is one example of spike detection rate graphic :
 
 ![](img/example_detection_rate.png)
+
 In addition, this function returns an excel file called "AWSDR" with date and time as suffix and contains as many sheets as there are conditions. Each sheet contains a table with two columns. The first column indicates time, and the second column indicates the firing rate.
 
 These pictures and this excel file are saved in the output directory you have precised in the `output_directory` argument.
