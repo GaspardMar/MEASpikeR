@@ -116,7 +116,7 @@ dir.create(path = "C:/Users/prenom.nom/Desktop/output MEA")
 
 ### spike_waveform
 
-This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed.qqq
+This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed.
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # The path to the Rdat file obtained by dataset_filtering
