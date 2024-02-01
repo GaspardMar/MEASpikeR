@@ -65,7 +65,11 @@ Click [here](https://instituteicm-my.sharepoint.com/personal/gaspard_martet_icm-
 
 ## Step 3: Create a MEASpikeR object
 
+<<<<<<< HEAD
 The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATAFILTERED.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
+=======
+The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATA2ANALYZE.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
+>>>>>>> 76c179b58b93435b837dd980c4d00dc3c1b9263a
 
 **This function must always be launched first to be able to use the other functions. If the guideline is modified, it must also be relaunched to update the MEASpikeR object.**
 
