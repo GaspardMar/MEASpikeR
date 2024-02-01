@@ -3,7 +3,7 @@
 #' Filters the data according to the conditions of the guideline
 #'
 #' @param data.path The path directory to the folder containing the data and the guideline.
-#' @param guideline_file_name The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")
+#' @param guideline_filename The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")
 #' @param sheet_used Number indicating the excel sheet where the guideline is located (by default 1)
 #' @param MinFR Minimum number of spike considered in the guideline time window.
 #' @param spike.sorting Boolean, if TRUE a spike sorting is performed (by default FALSE)
@@ -14,14 +14,14 @@
 #' @param nb.electrode Number which specifies the number of electrodes located on the MEA chip (by default 64)
 #' @param save.rDATA Boolean, if TRUE (by default) the filtered data are saved in the directory specified in \code{data.path}
 #' @param filename Character, the name of the .Rdat file in which filtered data will
-#' be saved if \code{save.rDATA = TRUE} (by default "MEA_DATA2ANALYZE")
+#' be saved if \code{save.rDATA = TRUE} (by default "MEA_DATAFILTERED")
 #'
 #' @return An object of class 'MEASpikeR' which will be the input of all other functions of the MEASpikeR package.
-#' if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATA2ANALYZE" is saved
+#' if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATAFILTERED" is saved
 #' in the \code{data.path} directory
 #' @examples \dontrun{
 #' dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
-#' guideline_file_name = "MEA_Spikes_ANA_R_guideline")
+#' guideline_filename = "MEA_Spikes_ANA_R_guideline")
 #' }
 #'
 #' @author François-Xavier Lejeune, Gaspard Martet, Carine Dalle
@@ -30,7 +30,7 @@
 #' @export
 dataset_filtering <- function(
     data.path,
-    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
+    guideline_filename = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -39,15 +39,15 @@ dataset_filtering <- function(
     cutoff.index = 0.5,
     nb.electrode = 64,
     save.rDATA = TRUE,
-    filename = "MEA_DATA2ANALYZE"
+    filename = "MEA_DATAFILTERED"
 ) {
 
-  if (file.exists(paste0(data.path, "/",guideline_file_name, ".xlsx")) == FALSE){
+  if (file.exists(paste0(data.path, "/",guideline_filename, ".xlsx")) == FALSE){
     stop("Path to the guideline file doesn't exist. Please check the name of your guideline file
-         and specify it in guideline_file_name argument", call. = FALSE)
+         and specify it in guideline_filename argument", call. = FALSE)
   }
 
-  guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_file_name, ".xlsx"),
+  guideline <- openxlsx::read.xlsx(paste0(data.path, "/",guideline_filename, ".xlsx"),
                                    sheet = sheet_used,
                                    rowNames = FALSE, colNames = FALSE, startRow = 2,
                                    skipEmptyCols = FALSE,

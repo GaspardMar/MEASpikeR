@@ -39,7 +39,7 @@
 #'
 #' # if you want to work with the saved Rdat file
 #' MEASpikeR::ISI(
-#' filt.data.path = "C:/Users/prenom.nom/Documents/data/MEA_DATA2ANALYZE.Rdat",
+#' filt.data.path = "C:/Users/prenom.nom/Documents/data/MEA_DATAFILTERED.Rdat",
 #' output_directory = "C:/Users/prenom.nom/Documents"
 #' )
 #' }

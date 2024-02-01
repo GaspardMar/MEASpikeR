@@ -6,7 +6,7 @@
 \usage{
 dataset_filtering(
   data.path,
-  guideline_file_name = "MEA_Spikes_ANA_R_guideline",
+  guideline_filename = "MEA_Spikes_ANA_R_guideline",
   sheet_used = 1,
   MinFR = 0,
   spike.sorting = FALSE,
@@ -15,13 +15,13 @@ dataset_filtering(
   cutoff.index = 0.5,
   nb.electrode = 64,
   save.rDATA = TRUE,
-  filename = "MEA_DATA2ANALYZE"
+  filename = "MEA_DATAFILTERED"
 )
 }
 \arguments{
 \item{data.path}{The path directory to the folder containing the data and the guideline.}
 
-\item{guideline_file_name}{The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")}
+\item{guideline_filename}{The name of the excel file containing the guideline (by default "MEA_Spikes_ANA_R_guideline")}
 
 \item{sheet_used}{Number indicating the excel sheet where the guideline is located (by default 1)}
 
@@ -41,11 +41,11 @@ dataset_filtering(
 \item{save.rDATA}{Boolean, if TRUE (by default) the filtered data are saved in the directory specified in \code{data.path}}
 
 \item{filename}{Character, the name of the .Rdat file in which filtered data will
-be saved if \code{save.rDATA = TRUE} (by default "MEA_DATA2ANALYZE")}
+be saved if \code{save.rDATA = TRUE} (by default "MEA_DATAFILTERED")}
 }
 \value{
 An object of class 'MEASpikeR' which will be the input of all other functions of the MEASpikeR package.
-if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATA2ANALYZE" is saved
+if \code{save.rDATA = TRUE}, a ".Rdat" file called by default "MEA_DATAFILTERED" is saved
 in the \code{data.path} directory
 }
 \description{
@@ -54,7 +54,7 @@ Filters the data according to the conditions of the guideline
 \examples{
 \dontrun{
 dataset_filtering(data.path = "C:/Users/prenom.nom/Documents/data",
-guideline_file_name = "MEA_Spikes_ANA_R_guideline")
+guideline_filename = "MEA_Spikes_ANA_R_guideline")
 }
 
 }
