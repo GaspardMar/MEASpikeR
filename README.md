@@ -58,7 +58,7 @@ Click [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_marte
 
 ## Step 3: Create a MEASpikeR object
 
-The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATA2ANALYZE.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
+The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATAFILTERED.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
 
 **This function must always be launched first to be able to use the other functions. If the guideline is modified, it must also be relaunched to update the MEASpikeR object.**
 
@@ -69,7 +69,7 @@ data_path <- "C:/Users/prenom.nom/Desktop/MEA/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path,
-    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
+    guideline_filename = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -78,7 +78,7 @@ out.MEA <- MEASpikeR::dataset_filtering(
     cutoff.index = 0.5,
     nb.electrode = 64,
     save.rDATA = TRUE,
-    filename = "MEA_DATA2ANALYZE"
+    filename = "MEA_DATAFILTERED"
 )
 
 ```
@@ -113,7 +113,7 @@ This function is used to visualize overlapped spike waveform from each electrode
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # The path to the Rdat file obtained by dataset_filtering
-filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATA2ANALYZE.Rdat"
+filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATAFILTERED.Rdat"
 
 # The path to the output directory created before (or you current directory)
 output_MEA <- "C:/Users/prenom.nom/Desktop/output MEA"
