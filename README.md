@@ -48,7 +48,7 @@ Data are generated automatically from recordings. **These files consist of “fr
 
 A guideline is required to perform customized and multiple analyses of a single recording file. The guideline is an excel file which contains the name of the recording file and the setting parameters to be chosen by the user. These parameters include, among others, the time window for analysis, the channels to keep (or exclude), the minimum number of spikes required to analyze a channel, etc.  like for example, which channel to exclude or the time window which is interesting for analyses. In the link below, you can download the blank template file of the guideline **to fill in for your own analyses**. it's the sheet called "guideline_void" in the "MEA_Spikes_ANA_R_guideline" file. This file contains also a dictionnary of all guideline parameters and an example filled-in guideline.
 
-Click [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYB55i_-LansmJY5tW7cgFk3Q?e=faZsyD) to download the example `\data` folder with a void guideline to fill in.
+Click [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYB55i_-LansmJY5tW7cgFk3Q?e=faZsyD) to download the example `\data` folder with a void guideline [here](https://instituteicm-my.sharepoint.com/:x:/g/personal/gaspard_martet_icm-institute_org/EQGEqp1VpVFNmHSCzpWDPjkBkk48kzqwPBPxYd95IRZ5pg?e=KaI6WV) to fill in.
 
 ![](img/data_file3.png)
 
@@ -58,7 +58,7 @@ Click [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_marte
 
 ## Step 3: Create a MEASpikeR object
 
-The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATA2ANALYZE.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
+The `dataset_filtering` function extracts information from the guideline and `.csv` files (data folder) to create a `MEASpikeR` object with all the filtered data into R data format. Using the function, the data usable by the functions of the package is stored in the form of an R object of class “MEASpikeR” and/or in the form of a `.RData` file saved in the data folder (named “MEA_DATAFILTERED.Rdata” by default or by any name that can be specified by the user through the function argument `filename`).
 
 **This function must always be launched first to be able to use the other functions. If the guideline is modified, it must also be relaunched to update the MEASpikeR object.**
 
@@ -69,7 +69,7 @@ data_path <- "C:/Users/prenom.nom/Desktop/MEA/data"
 # Apply the function dataset_filtering
 out.MEA <- MEASpikeR::dataset_filtering(
     data.path = data_path,
-    guideline_file_name = "MEA_Spikes_ANA_R_guideline",
+    guideline_filename = "MEA_Spikes_ANA_R_guideline",
     sheet_used = 1,
     MinFR = 0,
     spike.sorting = FALSE,
@@ -78,7 +78,7 @@ out.MEA <- MEASpikeR::dataset_filtering(
     cutoff.index = 0.5,
     nb.electrode = 64,
     save.rDATA = TRUE,
-    filename = "MEA_DATA2ANALYZE"
+    filename = "MEA_DATAFILTERED"
 )
 
 ```
@@ -113,7 +113,7 @@ This function is used to visualize overlapped spike waveform from each electrode
 
 ```{r, include = TRUE, tidy = TRUE, eval = FALSE, highlight = TRUE}
 # The path to the Rdat file obtained by dataset_filtering
-filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATA2ANALYZE.Rdat"
+filt.data.path <- "C:/Users/prenom.nom/Desktop/MEA/data/MEA_DATAFILTERED.Rdat"
 
 # The path to the output directory created before (or you current directory)
 output_MEA <- "C:/Users/prenom.nom/Desktop/output MEA"
