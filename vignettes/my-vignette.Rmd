@@ -55,7 +55,7 @@ Data are generated automatically from recordings. **These files consist of “fr
 
 A guideline is required to perform customized and multiple analyses of a single recording file. The guideline is an excel file which contains the name of the recording file and the setting parameters to be chosen by the user. These parameters include, among others, the time window for analysis, the channels to keep (or exclude), the minimum number of spikes required to analyze a channel, etc.  like for example, which channel to exclude or the time window which is interesting for analyses. In the link below, you can download the blank template file of the guideline **to fill in for your own analyses**. it's the sheet called "guideline_void" in the "MEA_Spikes_ANA_R_guideline" file. This file contains also a dictionnary of all guideline parameters and an example filled-in guideline.
 
-Click [here](https://instituteicm-my.sharepoint.com/personal/gaspard_martet_icm-institute_org/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fgaspard%5Fmartet%5Ficm%2Dinstitute%5Forg%2FDocuments%2FDocuments%2FMEA%2Fdata&view=0) to download the example `\data` folder with a void guideline to fill in.
+Click [here](https://drive.google.com/drive/folders/1x3LbuEKpbs_95sHczyhcZw9l9-7OB6J0?usp=drive_link) to download the example `\data` folder with a void guideline to fill in.
 
 ![](../img/data_file3.png)
 
