@@ -44,6 +44,8 @@ detect_burst_chen <- function(v.isi, min.spike.within.burst = 3) {
 
         }
 
+        else {burst[c(k-1,k)] <- NA}
+
       }
 
       if (sum(burst == paste0("burst", num), na.rm =TRUE) < min.spike.within.burst) {
