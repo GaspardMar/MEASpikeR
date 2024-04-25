@@ -69,6 +69,8 @@ Click [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_marte
 
 ## Step 3: Create a MEASpikeR object
 
+### 1. dataset_filtering
+
 The dataset_filtering function extracts information from guideline and `.csv` files in the data folder to create an R object of class 'MEASpikeR' containing filtered data. This function stores the usable data for the package's functions either as an R object (class 'MEASpikeR') or/and as a `.RData` file in the data folder. The default filename is 'MEA_DATAFILTERED.Rdata,' but users can specify a different name using the 'filename' function argument.
 
 **This function must always be launched first to be able to use the other functions. If the guideline is modified, it must also be relaunched to update the MEASpikeR object.**
@@ -98,9 +100,7 @@ out.MEA <- MEASpikeR::dataset_filtering(
 
 **Spike sorting:** In the arguments, it is still possible to activate a "spike sorting" feature (`spike.sorting=TRUE`) that allows grouping recordings from the same channel based on the signal’s waveform, and in certain cases, identifying artifact signals. The implemented approach for the spike sorting uses four components of the principal component analysis (PCA) of signals, along with a classification using the k-means method to identify potential clusters. To determine the number of clusters, the function uses several indices implemented in the R package NbClust (by default, the "silhouette" method). It is emphasized to the user that spike sorting is not the primary goal of the MEASpikeR package, and more sophisticated methods exist in other specialized softwares.
 
-**Outputs:** The output object contains the filtered data for each condition (a data frame per condition). This step is carried out according to the “guideline”, allowing for customized data analysis. For example, by selecting recording time windows, excluding certain electrodes, or choosing only electrodes with sufficient signal (by specifying the `minFR` and/or `min.spike` arguments). All outputs (also including the guideline, and data summary tables) are stored in an object of class “MEASpikeR” and/or a `.RData` file that are generated to be used as inputs of the other functions of the package.
-
-![](img/mea_datafiltered.png)
+**Outputs:** The output object contains the filtered data for each condition (a data frame per condition). This step is carried out according to the “guideline”, allowing for customized data analysis. For example, by selecting recording time windows, excluding certain electrodes, or choosing only electrodes with sufficient signal (by specifying the `minFR` and/or `min.spike` arguments). All outputs (also including the guideline, and data summary tables) are stored in an object of class “MEASpikeR” and/or a `.RData` file (saved in the `\data` folder) that are generated to be used as inputs of the other functions of the package.
 
 ## Step 4 (optional): Create an output directory
 
@@ -118,7 +118,7 @@ dir.create(path = "C:/Users/prenom.nom/Desktop/output_MEA")
 
 ## Step 5: Data visualisation functions
 
-### spike_waveform
+### 2. spike_waveform
 
 This function is used to visualize overlapped spike waveform from each electrode. MEASpikeR allows for signal suppression, enabling the user to handle signal artefacts easily and efficiently and so for incomplete datasets to be analysed.
 
@@ -174,7 +174,7 @@ We can also open it in `.pdf` version:
 ![](img/waveform_example3.png)
 
 
-### ISI
+### 3. ISI
 
 This function generates histogram of the inter-spike interval (ISI) which is the time between two sequential spikes. This histogram is draw for each electrode.
 
@@ -213,7 +213,7 @@ We can also open it in `.pdf` version:
 
 ![](img/ISI_example3.png)
 
-### spikeraster_heatmap
+### 4. spikeraster_heatmap
 
 This function gives two types of graphics: Spikerasters and heatmaps. The first one draw period of recording spikes for each electrode and include time window to delete. The second one provides heatmaps which represents the Spike activity of each electrode of the matrix.
 
@@ -262,7 +262,7 @@ The output of this function is a `.pdf` file which contains a raster plot and a 
 
 ![](img/rasterplot_heatmap.png)
 
-### spike_rate_plot
+### 5. spike_rate_plot
 
 This function can be used to see for each condition at which time spikes have the higher rate
 
@@ -297,7 +297,7 @@ These pictures and this excel file are saved in the output directory you have pr
 
 ## Step 6: Quantitative data analyses functions
 
-### firing_rate
+### 6. firing_rate
 
 This function extracts the number of active electrodes and mean firing rate (MFR in Hz) at the well-level and those for each condition which are in the analytical guideline. 
 
@@ -364,7 +364,7 @@ There is what each column means:
 
 It's the same as the guideline in the `\data` folder.
 
-### burst_detection
+### 7. burst_detection
 
 This function detects bursts which are short periods of time with elevated spike frequencies. Users can choose between two methods: the "Maximum Interval" (MI) ou Chen method (or log SI). It extracts several features per electrods such as burst durations, burst rates, IBI and number of spikes in a burst. 
 
