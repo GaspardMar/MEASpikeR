@@ -28,9 +28,9 @@ A quick introduction to MEASpikeR including download, installation and getting s
 
 Here, the user simply needs to download:
 
-*  the `\data` directory containing the data files and the guideline file [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYB55i_-LansmJY5tW7cgFk3Q?e=VFiAKw)
+*  the `\data` directory containing the data files and the guideline file [here](https://instituteicm-my.sharepoint.com/:f:/g/personal/gaspard_martet_icm-institute_org/Eo0m4uB8wWZBlXsDMaH96bYB55i_-LansmJY5tW7cgFk3Q?e=VFiAKw).
 
-* an R file to open in RStudio that contains ready-to-use commands for subsequently using the various analysis functions of the package on the example data. [here](https://instituteicm-my.sharepoint.com/personal/gaspard_martet_icm-institute_org/_layouts/15/onedrive.aspx?login_hint=gaspard%2Emartet%40icm%2Dinstitute%2Eorg&sw=auth&id=%2Fpersonal%2Fgaspard%5Fmartet%5Ficm%2Dinstitute%5Forg%2FDocuments%2FDocuments%2FMEA%2Fprocedure%5Fuse%5FMEASpikeR&view=0) For all details, you can access to the documentation of the functions in the Help window of Rtudio.
+* an R file to open in RStudio that contains ready-to-use commands for subsequently using the various analysis functions of the package on the example data [here](https://instituteicm-my.sharepoint.com/personal/gaspard_martet_icm-institute_org/_layouts/15/onedrive.aspx?login_hint=gaspard%2Emartet%40icm%2Dinstitute%2Eorg&sw=auth&id=%2Fpersonal%2Fgaspard%5Fmartet%5Ficm%2Dinstitute%5Forg%2FDocuments%2FDocuments%2FMEA%2Fprocedure%5Fuse%5FMEASpikeR&view=0). For all details, you can access to the documentation of the functions in the Help window of Rtudio.
 
 ## How to install MEASpikeR from GitLab 
 
